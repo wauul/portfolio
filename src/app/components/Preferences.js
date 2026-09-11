@@ -73,9 +73,14 @@ export function PreferenceControls() {
             <path d="M3 12h18" />
           </svg>
           {language.toUpperCase()}
-          <span className="language-chevron" aria-hidden="true">
-            ⌄
-          </span>
+          <svg
+            className="language-chevron"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            style={{ display: "block", flexShrink: 0 }}
+          >
+            <path d="m7 9.5 5 5 5-5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </summary>
         <div className="language-options">
           {[
