@@ -39,7 +39,7 @@ French is the initial server-rendered language; English is available from the he
 
 The visitor panel shows the browser's local time and requests approximate IP location from FreeIPAPI, with ipify as an IP-only fallback. Open-Meteo supplies the weather. No GPS permission is used and the application does not persist visitor information. Providers receive the requests; attribution is shown on the page. Service failures leave the clock and available fields working and offer a retry. External services have their own usage limits.
 
-The WF hero responds to pointer movement on desktop. `ScrollStory.js` drives the three scroll chapters without scroll hijacking. Reduced-motion mode disables transforms and presents all chapter text in a normal reading order.
+The WF hero responds to pointer movement on desktop. `ScrollStory.js` presents one pinned card that transitions through five personal journey scenes as the visitor scrolls. A stable small-viewport height, lightweight SVG artwork and complementary crossfade weights prevent blank transitions. The card follows light/dark preferences. Shared vector geometry morphs between scenes while text fades and slides; reduced-motion mode switches scenes without motion or crossfades.
 
 ## Contact form activation (Resend)
 

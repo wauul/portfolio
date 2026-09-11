@@ -172,11 +172,10 @@ function Portfolio() {
   const { t } = usePreferences();
   const root = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [copied, setCopied] = useState(false);
-  const [copyError, setCopyError] = useState(false);
-  const timer = useRef(null);
   useEffect(() => {
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const media = window.matchMedia(
+      "(prefers-reduced-motion: reduce), (max-width: 900px), (pointer: coarse)",
+    );
     const elements = root.current.querySelectorAll("[data-depth]");
     let frame = 0;
     const update = () => {
@@ -190,7 +189,7 @@ function Portfolio() {
       );
     };
     const scroll = () => {
-      if (!frame) frame = requestAnimationFrame(update);
+      if (!media.matches && !frame) frame = requestAnimationFrame(update);
     };
     window.addEventListener("scroll", scroll, {
       passive: true,
@@ -201,20 +200,8 @@ function Portfolio() {
       window.removeEventListener("scroll", scroll);
       media.removeEventListener("change", update);
       cancelAnimationFrame(frame);
-      clearTimeout(timer.current);
     };
   }, []);
-  async function copyEmail() {
-    try {
-      await navigator.clipboard.writeText("waelfezari@gmail.com");
-      setCopied(true);
-      setCopyError(false);
-      clearTimeout(timer.current);
-      timer.current = setTimeout(() => setCopied(false), 2500);
-    } catch {
-      setCopyError(true);
-    }
-  }
   return (
     <div ref={root}>
       <a className="skip-link" href="#main">
@@ -513,18 +500,6 @@ function Portfolio() {
                 <a className="email-link" href="mailto:waelfezari@gmail.com">
                   waelfezari@gmail.com
                 </a>
-                <button className="copy-button" onClick={copyEmail}>
-                  {copied ? t("Copied \u2713") : t("Copy email")}
-                </button>
-                <p role="status" className="copy-status">
-                  {copyError
-                    ? t(
-                        "Please use the email link or copy the address manually.",
-                      )
-                    : copied
-                      ? t("Email address copied to clipboard.")
-                      : ""}
-                </p>
               </div>
               <p>
                 {t("Available immediately.") + " "}
