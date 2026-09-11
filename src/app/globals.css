@@ -3313,3 +3313,8 @@ footer a:hover {
 
 .language-picker { border-top: 0; padding-top: 0; }
 .language-picker summary span { font-size: 12px; color: inherit; }
+/* Keep the hero's decorative layers stable on touch devices. */
+@media (max-width:900px), (pointer:coarse) {
+  .sculpture-object, .sculpture-tag { transform:none !important; transition:none !important; will-change:auto; }
+  .sculpture-orbit { filter:none; }
+}
