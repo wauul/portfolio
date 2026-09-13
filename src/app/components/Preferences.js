@@ -11,7 +11,7 @@ export function PreferencesProvider({ children }) {
         setLanguage("en");
     } catch {}
     setTheme(
-      document.documentElement.dataset.theme === "dark" ? "dark" : "light",
+      document.documentElement.dataset.theme === "light" ? "light" : "dark",
     );
   }, []);
   useEffect(() => {
@@ -28,7 +28,7 @@ export function PreferencesProvider({ children }) {
     } catch {}
   }
   function toggleTheme() {
-    const value = theme === "dark" ? "light" : "dark";
+    const value = theme === "light" ? "dark" : "light";
     setTheme(value);
     document.documentElement.dataset.theme = value;
     try {
