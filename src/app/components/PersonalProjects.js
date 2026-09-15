@@ -46,32 +46,59 @@ export default function PersonalProjects() {
     const cards = Array.from(root.querySelectorAll("article"));
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     let frame = 0;
+    let settleTimer = 0;
+    let touching = false;
+    function settle() {
+      if (touching) return;
+      const top = parseFloat(root.style.getPropertyValue("--pin-top"));
+      const distance = root.offsetHeight - stage.current.offsetHeight;
+      const offset = top - root.getBoundingClientRect().top;
+      // Never pull the visitor back after they leave this section.
+      if (distance <= 0 || offset <= 0 || offset >= distance) return;
+      const { index, blend, active: nearest } = journeyFrame(offset / distance, cards.length);
+      if (blend === 0 || blend === 1) return;
+      // Finish only the partial transition, preserving the reading intervals.
+      const chapterPosition = nearest === index ? index + 0.44 : index + 1.01;
+      const destination = window.scrollY - offset + distance * chapterPosition / cards.length;
+      window.scrollTo({ top: destination, behavior: media.matches ? "instant" : "smooth" });
+    }
+    function queueSettle() {
+      clearTimeout(settleTimer);
+      settleTimer = window.setTimeout(settle, 180);
+    }
+    function onScroll() { schedule(); queueSettle(); }
+    function onTouchStart() { touching = true; clearTimeout(settleTimer); }
+    function onTouchEnd() { touching = false; queueSettle(); }
     function update() {
       frame = 0;
       const top = (document.querySelector(".site-header")?.offsetHeight || 94) + 16;
       root.style.setProperty("--pin-top", `${top}px`);
-      const required = Math.max(...cards.map(card => card.offsetHeight)) + 144;
-      const canPin = !media.matches && required <= window.innerHeight - top - 16;
+      // The carousel must remain a carousel in short browser panels too.
+      // Its viewport adapts in CSS; long copy can scroll inside its own panel.
+      const canPin = true;
       if (pinnedRef.current !== canPin) { pinnedRef.current = canPin; setPinned(canPin); }
       const distance = Math.max(1, root.offsetHeight - stage.current.offsetHeight);
       const progress = canPin ? Math.max(0, Math.min(1, (top - root.getBoundingClientRect().top) / distance)) : 0;
       // Use the journey's exact chapter timing; travel horizontally instead of fading.
       const { index: chapter, blend, active: current } = journeyFrame(progress, cards.length);
-      const position = chapter + blend;
+      const position = media.matches ? current : chapter + blend;
       if (activeRef.current !== current) { activeRef.current = current; setActive(current); }
       root.style.setProperty("--progress", String(progress));
       cards.forEach((card, index) => {
         const delta = index - position;
         card.style.setProperty("--slide-x", canPin ? `${delta * 108}%` : "0%");
         card.style.setProperty("--visual-depth", canPin ? `${-delta * 6}%` : "0%");
-        card.style.visibility = !canPin || Math.abs(delta) <= 1 ? "visible" : "hidden";
+        card.style.visibility = media.matches ? (index === current ? "visible" : "hidden") : Math.abs(delta) <= 1 ? "visible" : "hidden";
         card.inert = canPin && index !== current;
         if (canPin && index !== current) card.setAttribute("aria-hidden", "true");
         else card.removeAttribute("aria-hidden");
       });
     }
     function schedule() { if (!frame) frame = requestAnimationFrame(update); }
-    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
+    window.addEventListener("touchend", onTouchEnd, { passive: true });
+    window.addEventListener("touchcancel", onTouchEnd, { passive: true });
     window.addEventListener("resize", schedule);
     media.addEventListener("change", schedule);
     const observer = new ResizeObserver(schedule);
@@ -79,11 +106,15 @@ export default function PersonalProjects() {
     observer.observe(root);
     update();
     return () => {
-      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchend", onTouchEnd);
+      window.removeEventListener("touchcancel", onTouchEnd);
       window.removeEventListener("resize", schedule);
       media.removeEventListener("change", schedule);
       observer.disconnect();
       cancelAnimationFrame(frame);
+      clearTimeout(settleTimer);
     };
   }, []);
   function jumpTo(index) {
