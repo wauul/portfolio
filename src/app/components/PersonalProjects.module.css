@@ -10,7 +10,7 @@
 .pinned .stage { position: sticky; top: var(--pin-top); height: calc(100svh - var(--pin-top) - 16px); display: grid; grid-template-rows: auto minmax(0, 1fr) auto; }
 .stageHeader { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 40px; margin-bottom: 16px; color: var(--muted); font-size: .875rem; }
 .scenes { display: grid; gap: 48px; }
-.card { min-width: 0; display: grid; grid-template-columns: 1.08fr 1fr; align-items: center; gap: 48px; scroll-margin-top: 128px; }
+.card { min-width: 0; display: grid; grid-template-columns: 1.08fr 1fr; align-items: center; gap: 48px; scroll-margin-top: 128px; cursor: pointer; }
 .pinned .scenes { gap: 0; overflow: clip; padding: 8px; margin: -8px; min-height: 0; grid-template-rows: minmax(0, 1fr); }
 .pinned .card { grid-area: 1 / 1; min-height: 0; height: 100%; pointer-events: none; transform: translate3d(var(--slide-x, 0%), 0, 0); }
 .pinned .card:not([inert]) { pointer-events: auto; }
@@ -32,8 +32,12 @@
 .skillsLabel { font-size: .875rem; color: var(--muted); margin: 0 0 8px; }
 .skills { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0 0 24px; }
 .skills li { border: 1px solid var(--line); padding: 4px 8px; border-radius: 8px; font-size: .75rem; line-height: 1.5; }
-.github { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 1rem; border-bottom: 1px solid var(--muted); }
-.github svg { width: 20px; height: 20px; flex-shrink: 0; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
+.live, .github { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; font-size: 1rem; }
+.live { border-radius: 999px; padding: 8px 16px; background: var(--orange); color: var(--paper); font-weight: 700; }
+.github { border-bottom: 1px solid var(--muted); }
+.live svg, .github svg { width: 20px; height: 20px; flex-shrink: 0; }
+.live:hover { filter: brightness(.92); }
 .github:hover { color: var(--orange); }
 .footer { margin-top: 16px; }
 .chapters { display: flex; gap: 8px; justify-content: space-between; }
@@ -42,7 +46,7 @@
 .chapters button[aria-current] { color: var(--ink); background: color-mix(in srgb, var(--ink) 8%, var(--paper)); font-weight: 700; }
 .chapters button:hover, .play:hover { background: color-mix(in srgb, var(--ink) 8%, var(--paper)); }
 .chapters button:active, .play:active { background: color-mix(in srgb, var(--ink) 14%, var(--paper)); }
-.chapters button:focus-visible, .play:focus-visible, .github:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+.chapters button:focus-visible, .play:focus-visible, .live:focus-visible, .github:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
 .progress { height: 2px; margin-top: 8px; background: var(--line); }
 .progress span { display: block; height: 100%; background: var(--orange); transform: scaleX(var(--progress, 0)); transform-origin: left; }
 @media (max-width: 1100px) {

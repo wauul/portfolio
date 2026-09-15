@@ -122,6 +122,10 @@ export default function PersonalProjects() {
     const start = window.scrollY + root.getBoundingClientRect().top - parseFloat(root.style.getPropertyValue("--pin-top"));
     window.scrollTo({ top: start + (root.offsetHeight - stage.current.offsetHeight) * (index + 0.15) / personalProjects.length, behavior: "instant" });
   }
+  function openProject(event, url) {
+    if (event.target.closest("a, button")) return;
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
   return (
     <section id="personal-projects" className={`section-wrap ${styles.section}`} aria-labelledby="personal-projects-title">
       <div className={styles.heading}>
@@ -133,14 +137,17 @@ export default function PersonalProjects() {
             <div className={styles.stageHeader}><span>{french ? "Le laboratoire personnel" : "The personal lab"}</span><span>{pinned ? (french ? "Défilez pour explorer" : "Scroll to explore") : (french ? "Six projets à découvrir" : "Six projects to explore")}</span></div>
             <div className={styles.scenes}>
           {personalProjects.map((project, index) => (
-            <article key={project.id} id={`project-${project.id}`} className={styles.card} aria-labelledby={`title-${project.id}`}>
+            <article key={project.id} id={`project-${project.id}`} className={styles.card} aria-labelledby={`title-${project.id}`} onClick={(event) => openProject(event, project.live)}>
               <Demo project={project} french={french} active={!pinned || active === index} />
               <div className={styles.content}>
                 <div className={styles.category}><span>{project.category[locale]}</span><span>{String(index + 1).padStart(2, "0")} / 06</span></div>
                 <h3 id={`title-${project.id}`}>{project.name}</h3><p className={styles.description}>{project.description[locale]}</p>
                 <p className={styles.skillsLabel}>{french ? "Compétences utilisées" : "Skills used"}</p>
                 <ul className={styles.skills}>{project.skills.map((skill) => <li key={skill}>{skill}</li>)}</ul>
-                <a href={project.github} target="_blank" rel="noopener noreferrer" className={styles.github} aria-label={`${french ? "Voir le code sur GitHub" : "View code on GitHub"} — ${project.name} (${french ? "nouvel onglet" : "new tab"})`}><FiCode aria-hidden="true" />{french ? "Voir le code sur GitHub" : "View code on GitHub"}<FiArrowUpRight aria-hidden="true" /></a>
+                <div className={styles.actions}>
+                  <a href={project.live} target="_blank" rel="noopener noreferrer" className={styles.live} aria-label={`${french ? "Ouvrir l’application" : "Open live app"} — ${project.name} (${french ? "nouvel onglet" : "new tab"})`}>{french ? "Ouvrir l’application" : "Open live app"}<FiArrowUpRight aria-hidden="true" /></a>
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className={styles.github} aria-label={`${french ? "Voir le code sur GitHub" : "View code on GitHub"} — ${project.name} (${french ? "nouvel onglet" : "new tab"})`}><FiCode aria-hidden="true" />{french ? "Voir le code sur GitHub" : "View code on GitHub"}<FiArrowUpRight aria-hidden="true" /></a>
+                </div>
               </div>
             </article>
           ))}
