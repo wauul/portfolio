@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
     knowsAbout: ["Python", "TypeScript", "React", "Azure OpenAI", "RAG"],
   };
   return (
-    <html lang="fr" data-theme="light" suppressHydrationWarning>
+    <html lang="fr" data-theme="dark" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{

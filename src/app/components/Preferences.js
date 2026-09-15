@@ -4,15 +4,39 @@ import french from "../lib/fr.json";
 const Preferences = createContext(null);
 export function PreferencesProvider({ children }) {
   const [language, setLanguage] = useState("fr");
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
   useEffect(() => {
+    let active = true;
+    let storedLanguage = null;
     try {
-      if (localStorage.getItem("portfolio-language") === "en")
-        setLanguage("en");
+      storedLanguage = localStorage.getItem("portfolio-language");
+      if (storedLanguage === "fr" || storedLanguage === "en") {
+        setLanguage(storedLanguage);
+      }
     } catch {}
+    if (storedLanguage !== "fr" && storedLanguage !== "en") {
+      fetch("/api/locale", { cache: "no-store" })
+        .then((response) => (response.ok ? response.json() : null))
+        .then((value) => {
+          if (!active) return;
+          if (value?.language === "fr" || value?.language === "en") {
+            setLanguage(value.language);
+          } else if (!navigator.language.toLowerCase().startsWith("fr")) {
+            setLanguage("en");
+          }
+        })
+        .catch(() => {
+          if (active && !navigator.language.toLowerCase().startsWith("fr")) {
+            setLanguage("en");
+          }
+        });
+    }
     setTheme(
       document.documentElement.dataset.theme === "light" ? "light" : "dark",
     );
+    return () => {
+      active = false;
+    };
   }, []);
   useEffect(() => {
     document.documentElement.lang = language;

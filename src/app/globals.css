@@ -3318,3 +3318,214 @@ footer a:hover {
   .sculpture-object, .sculpture-tag { transform:none !important; transition:none !important; will-change:auto; }
   .sculpture-orbit { filter:none; }
 }
+
+/* Recruiter-first information architecture and interaction refinements. */
+html {
+  scroll-behavior: auto;
+}
+.header-preferences {
+  order: 3;
+}
+.mobile-contact,
+.mobile-preferences {
+  display: none;
+}
+.contact-arrow {
+  width: auto;
+  height: 58px;
+  min-width: 190px;
+  padding: 0 24px;
+  border-radius: 999px;
+  display: flex;
+  gap: 22px;
+  font-size: 26px;
+  letter-spacing: 0;
+}
+.contact-arrow span {
+  font-size: 13px;
+  font-weight: 600;
+}
+.contact-workspace {
+  grid-template-areas:
+    "intro form"
+    "social form";
+  align-items: start;
+}
+.contact-invitation {
+  grid-area: intro;
+}
+.contact-form {
+  grid-area: form;
+}
+.contact-socials {
+  grid-area: social;
+}
+.contact-socials .social-links {
+  margin-top: 0;
+}
+.direct-email-cta {
+  width: fit-content;
+  min-height: 44px;
+  margin-top: 24px;
+  padding: 11px 16px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.direct-email-cta:hover {
+  background: var(--orange);
+}
+.visitor-lab {
+  margin-block: 72px;
+}
+.visitor-lab > details {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+  overflow: hidden;
+}
+.visitor-lab > details > summary {
+  min-height: 92px;
+  padding: 22px 28px;
+  display: grid;
+  grid-template-columns: 160px 1fr auto;
+  align-items: center;
+  gap: 24px;
+  list-style: none;
+  cursor: pointer;
+}
+.visitor-lab > details > summary::-webkit-details-marker {
+  display: none;
+}
+.visitor-lab > details > summary > span:first-child {
+  font: 11px/1.5 Consolas, monospace;
+  letter-spacing: 1.4px;
+  color: var(--muted);
+}
+.visitor-lab > details > summary strong {
+  font-size: 18px;
+  font-weight: 500;
+}
+.visitor-lab > details > summary > span:last-child {
+  font-size: 24px;
+  transition: transform 0.2s;
+}
+.visitor-lab > details[open] > summary > span:last-child {
+  transform: rotate(45deg);
+}
+.visitor-content {
+  padding: 0 28px 28px;
+}
+.visitor-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+.eyebrow,
+.hero-meta,
+.hero-bottom,
+.project-index,
+.project-content details small,
+.download-card small,
+.contact-form .optional,
+.form-bottom p,
+.visitor-footnote p,
+footer p {
+  font-size: max(11px, 0.72rem);
+}
+
+@media (max-width: 760px) {
+  .site-header {
+    padding-inline: 20px;
+  }
+  .header-preferences {
+    display: none;
+  }
+  .mobile-contact {
+    display: flex;
+    order: 1;
+    min-height: 38px;
+    align-items: center;
+    padding: 0 13px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .menu-toggle {
+    order: 2;
+  }
+  .site-header nav {
+    order: 3;
+  }
+  .mobile-preferences {
+    display: block;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+  .mobile-preferences .preference-controls {
+    justify-content: center;
+  }
+  .contact-arrow {
+    width: fit-content;
+    min-width: 0;
+    height: 48px;
+    padding-inline: 18px;
+    gap: 14px;
+    font-size: 21px;
+  }
+  .contact-arrow span {
+    font-size: 12px;
+  }
+  .contact-workspace {
+    grid-template-areas:
+      "intro"
+      "form"
+      "social";
+  }
+  .direct-email-cta {
+    margin-inline: auto;
+  }
+  .contact-socials {
+    margin-top: 0;
+  }
+  .visitor-lab {
+    margin-block: 44px;
+  }
+  .visitor-lab > details > summary {
+    min-height: 0;
+    padding: 18px;
+    grid-template-columns: 1fr auto;
+    gap: 8px 16px;
+    text-align: left;
+  }
+  .visitor-lab > details > summary > span:first-child {
+    grid-column: 1 / -1;
+    font-size: 11px;
+  }
+  .visitor-lab > details > summary strong {
+    font-size: 15px;
+  }
+  .visitor-content {
+    padding: 0 18px 18px;
+  }
+  .visitor-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-meta,
+  .hero-bottom,
+  .project-index,
+  .project-content details small,
+  .download-card small {
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .visitor-lab > details > summary > span:last-child {
+    transition: none;
+  }
+}

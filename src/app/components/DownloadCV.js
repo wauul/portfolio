@@ -6,8 +6,8 @@ export default function DownloadCV({ compact = false }) {
   return (
     <a
       className={`download-card ${compact ? "download-compact" : ""}`}
-      href="/Wael-Fezari-CV.pdf"
-      download="Wael-Fezari-CV.pdf"
+      href={`/api/cv?lang=${language}`}
+      download={`Wael-Fezari-CV-${language.toUpperCase()}.pdf`}
     >
       <span className="download-file" aria-hidden="true">
         <svg viewBox="0 0 24 28" fill="none">
@@ -20,9 +20,9 @@ export default function DownloadCV({ compact = false }) {
       </span>
       <span>
         <strong>
-          {fr ? "Mon parcours, en une page." : "My story, in one page."}
+          {fr ? "Télécharger mon CV" : "Download my CV"}
         </strong>
-        <small>{fr ? "TÉLÉCHARGER LE CV" : "DOWNLOAD MY CV"} · PDF · FR</small>
+        <small>PDF · {fr ? "FRANÇAIS" : "ENGLISH"}</small>
       </span>
       <span className="download-arrow" aria-hidden="true">
         ↓

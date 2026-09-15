@@ -46,10 +46,19 @@ export default function VisitorPanel() {
       : "Unavailable";
   return (
     <section
-      className="visitor-section section-wrap"
+      className="visitor-section visitor-lab section-wrap"
       aria-labelledby="visitor-title"
     >
-      <div className="visitor-heading">
+      <details>
+        <summary>
+          <span>{fr ? "LAB INTERACTIF" : "INTERACTIVE LAB"}</span>
+          <strong>
+            {fr ? "Voir le contexte de votre visite" : "View your visit context"}
+          </strong>
+          <span aria-hidden="true">+</span>
+        </summary>
+        <div className="visitor-content">
+          <div className="visitor-heading">
         <div>
           <p className="eyebrow">
             {fr ? "VOUS ÊTES ICI / EN DIRECT" : "YOU ARE HERE / LIVE"}
@@ -91,16 +100,6 @@ export default function VisitorPanel() {
           <strong>{info?.location || fallback}</strong>
           <small>
             {fr ? "Estimée à partir de votre IP" : "Estimated from your IP"}
-          </small>
-        </div>
-        <div>
-          <span className="visitor-icon" aria-hidden="true">
-            ⌁
-          </span>
-          <span>{fr ? "Adresse IP publique" : "Public IP address"}</span>
-          <strong className="ip-value">{info?.ip || fallback}</strong>
-          <small>
-            {fr ? "Votre point de connexion" : "Your connection point"}
           </small>
         </div>
         <div>
@@ -158,6 +157,8 @@ export default function VisitorPanel() {
           </button>
         )}
       </div>
+        </div>
+      </details>
     </section>
   );
 }

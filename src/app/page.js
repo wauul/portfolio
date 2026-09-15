@@ -236,7 +236,12 @@ function Portfolio() {
         >
           WF<span>.</span>
         </a>
-        <PreferenceControls />
+        <div className="header-preferences">
+          <PreferenceControls />
+        </div>
+        <a className="mobile-contact" href="#contact">
+          {t("Contact")}
+        </a>
         <button
           className="menu-toggle"
           aria-expanded={menuOpen}
@@ -253,7 +258,7 @@ function Portfolio() {
           {[
             ["work", t("Selected work")],
             ["personal-projects", t("Personal projects")],
-            ["about", t("About")],
+            ["about", t("Skills & approach")],
             ["experience", t("Experience")],
           ].map(([id, label]) => (
             <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>
@@ -265,9 +270,12 @@ function Portfolio() {
             href="#contact"
             onClick={() => setMenuOpen(false)}
           >
-            {t("Let\u2019s talk") + " "}
+            {t("Contact") + " "}
             <Arrow />
           </a>
+          <div className="mobile-preferences">
+            <PreferenceControls />
+          </div>
         </nav>
       </header>
       <main id="main">
@@ -315,8 +323,6 @@ function Portfolio() {
             Azure OpenAI <i>/</i> FastAPI
           </div>
         </div>
-        <ScrollStory />
-        <VisitorPanel />
         <section id="work" className="section-wrap work-section">
           <div className="section-heading">
             <div>
@@ -494,6 +500,8 @@ function Portfolio() {
             </div>
           </div>
         </section>
+        <ScrollStory />
+        <VisitorPanel />
         <section id="contact" className="contact-section">
           <div className="section-wrap">
             <div className="eyebrow">
@@ -509,6 +517,7 @@ function Portfolio() {
                 aria-label={t("Email Wael Fezari")}
                 className="contact-arrow"
               >
+                <span>{t("Email me")}</span>
                 ↗
               </a>
             </h2>

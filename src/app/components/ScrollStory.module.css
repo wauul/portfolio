@@ -5,7 +5,7 @@
 .intro h2 { font-size:clamp(36px,5vw,70px); line-height:1.1; letter-spacing:-.045em; margin:22px 0; color:var(--j-ink); }
 .journey em { font-family:Georgia,serif; font-weight:400; color:var(--j-accent); }
 .intro > p:last-child { font-size:14px; color:var(--j-muted); }
-.track { height:580svh; position:relative; --progress:0; }
+.track { height:360svh; position:relative; --progress:0; }
 .stage { height:100svh; position:sticky; top:0; padding:100px 32px 24px; display:flex; align-items:center; justify-content:center; }
 .card { width:min(1248px,100%); height:100%; max-height:760px; background:var(--j-card); border:1px solid var(--j-line); border-radius:28px; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 24px 70px #0b251412; }
 .topline { display:flex; justify-content:space-between; gap:12px; padding:22px 32px; color:var(--j-muted); font:9px/1.4 Consolas,monospace; letter-spacing:1px; border-bottom:1px solid var(--j-line); }

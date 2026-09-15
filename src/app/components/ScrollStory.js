@@ -85,6 +85,10 @@ const chapters = [
   },
 ];
 
+const featuredChapters = chapters.filter(({ id }) =>
+  ["play", "team", "client"].includes(id),
+);
+
 function Illustration({ kind, fr }) {
   const id = `journey-${kind}`;
   const nodes = [
@@ -589,7 +593,7 @@ export default function ScrollStory() {
         <div className={styles.card}>
           <div className={styles.topline}><span>WF / {fr ? "MON PARCOURS" : "MY JOURNEY"}</span><span>{fr ? "DÉFILER POUR EXPLORER ↓" : "SCROLL TO EXPLORE ↓"}</span></div>
           <div className={styles.scenes}>
-            {chapters.map((chapter, i) => <article key={chapter.id} data-scene className={styles.scene} aria-hidden={i !== 0} style={{opacity:i===0?1:0, visibility:i===0?"visible":"hidden"}}>
+            {featuredChapters.map((chapter, i) => <article key={chapter.id} data-scene className={styles.scene} aria-hidden={i !== 0} style={{opacity:i===0?1:0, visibility:i===0?"visible":"hidden"}}>
               <div className={styles.art}><Illustration kind={chapter.id} fr={fr}/></div>
               <div data-copy className={styles.copy}>
                 <p className={styles.kicker}>0{i+1} / {chapter.label[l]}</p>
