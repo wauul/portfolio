@@ -9,8 +9,10 @@ GIFs play only when the visitor chooses Play demo and can be stopped. Failed
 images return to a readable placeholder. Recordings are shown without cropping.
 
 The section pins one stage below the site header while scrolling through all six
-projects. Demo panels move and scale during each transition; body copy stays in
-place and switches to the current project. Numbered controls jump to a project.
+projects. Vertical scrolling moves complete projects horizontally like a carousel,
+with a slight additional depth offset on the demo panel. The timing uses the same
+chapter function as My Journey, including a reading pause on the final project.
+Numbered controls jump to a project.
 Reduced motion, no JavaScript, and viewports too short to fit the content use a
 readable vertical layout. Inactive pinned projects are excluded from keyboard
 focus and assistive technology. The GIF panel itself moves with each transition.

@@ -5,6 +5,7 @@ import { FiDatabase, FiBookOpen, FiTrendingDown, FiHeadphones, FiRadio, FiCode, 
 import { useEffect, useRef, useState } from "react";
 import { usePreferences } from "./Preferences";
 import { personalProjects } from "../lib/personal-projects";
+import { journeyFrame } from "../lib/journey.mjs";
 import styles from "./PersonalProjects.module.css";
 
 const icons = { "rag-bench": FiDatabase, "study-room": FiBookOpen, watchtower: FiTrendingDown, "are-we-vibing": FiHeadphones, "recipe-buddy": FiBookOpen, "hooka-relay": FiRadio };
@@ -53,19 +54,17 @@ export default function PersonalProjects() {
       const canPin = !media.matches && required <= window.innerHeight - top - 16;
       if (pinnedRef.current !== canPin) { pinnedRef.current = canPin; setPinned(canPin); }
       const distance = Math.max(1, root.offsetHeight - stage.current.offsetHeight);
-      const raw = canPin ? Math.max(0, Math.min(5, (top - root.getBoundingClientRect().top) / distance * 5)) : 0;
-      const base = Math.floor(raw);
-      const blend = Math.max(0, Math.min(1, (raw - base - 0.55) / 0.45));
-      const position = base + blend * blend * (3 - 2 * blend);
-      const current = Math.min(5, Math.floor(position + 0.5));
+      const progress = canPin ? Math.max(0, Math.min(1, (top - root.getBoundingClientRect().top) / distance)) : 0;
+      // Use the journey's exact chapter timing; travel horizontally instead of fading.
+      const { index: chapter, blend, active: current } = journeyFrame(progress, cards.length);
+      const position = chapter + blend;
       if (activeRef.current !== current) { activeRef.current = current; setActive(current); }
-      root.style.setProperty("--progress", String(raw / 5));
+      root.style.setProperty("--progress", String(progress));
       cards.forEach((card, index) => {
         const delta = index - position;
-        card.style.setProperty("--scene-opacity", canPin ? String(Math.max(0, 1 - Math.abs(delta))) : "1");
-        card.style.setProperty("--visual-y", canPin ? `${delta * 85}%` : "0%");
-        card.style.setProperty("--visual-scale", canPin ? String(1 - Math.min(1, Math.abs(delta)) * 0.12) : "1");
-        card.style.visibility = !canPin || Math.abs(delta) < 1 ? "visible" : "hidden";
+        card.style.setProperty("--slide-x", canPin ? `${delta * 108}%` : "0%");
+        card.style.setProperty("--visual-depth", canPin ? `${-delta * 6}%` : "0%");
+        card.style.visibility = !canPin || Math.abs(delta) <= 1 ? "visible" : "hidden";
         card.inert = canPin && index !== current;
         if (canPin && index !== current) card.setAttribute("aria-hidden", "true");
         else card.removeAttribute("aria-hidden");
@@ -90,7 +89,7 @@ export default function PersonalProjects() {
   function jumpTo(index) {
     const root = track.current;
     const start = window.scrollY + root.getBoundingClientRect().top - parseFloat(root.style.getPropertyValue("--pin-top"));
-    window.scrollTo({ top: start + (root.offsetHeight - stage.current.offsetHeight) * index / 5, behavior: "instant" });
+    window.scrollTo({ top: start + (root.offsetHeight - stage.current.offsetHeight) * (index + 0.15) / personalProjects.length, behavior: "instant" });
   }
   return (
     <section id="personal-projects" className={`section-wrap ${styles.section}`} aria-labelledby="personal-projects-title">

@@ -12,10 +12,10 @@
 .scenes { display: grid; gap: 48px; }
 .card { min-width: 0; display: grid; grid-template-columns: 1.08fr 1fr; align-items: center; gap: 48px; scroll-margin-top: 128px; }
 .pinned .scenes { gap: 0; overflow: clip; padding: 8px; margin: -8px; }
-.pinned .card { grid-area: 1 / 1; pointer-events: none; }
+.pinned .card { grid-area: 1 / 1; pointer-events: none; transform: translate3d(var(--slide-x, 0%), 0, 0); }
 .pinned .card:not([inert]) { pointer-events: auto; }
 .demo { display: flex; flex-direction: column; position: relative; min-width: 0; background: color-mix(in srgb, var(--ink) 5%, var(--paper)); border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
-.pinned .demo { opacity: var(--scene-opacity, 0); transform: translate3d(0, var(--visual-y, 0%), 0) scale(var(--visual-scale, 1)); }
+.pinned .demo { transform: translate3d(var(--visual-depth, 0%), 0, 0); }
 .demoBar { display: flex; justify-content: space-between; gap: 16px; font-size: .875rem; color: var(--muted); padding-bottom: 16px; }
 .screen { position: relative; display: grid; place-items: center; min-height: 320px; overflow: hidden; background-image: radial-gradient(var(--line) 1px, transparent 1px); background-size: 24px 24px; }
 .screen img { object-fit: contain; background: var(--paper); }
@@ -25,7 +25,6 @@
 .play { align-self: center; min-height: 44px; border: 1px solid var(--muted); border-radius: 8px; background: var(--paper); color: var(--ink); padding: 8px 16px; margin-top: 16px; font-size: 1rem; white-space: nowrap; }
 .content { min-width: 0; text-align: start; padding: 8px 0; }
 .pinned .content { opacity: 1; }
-.pinned .card[inert] .content { visibility: hidden; }
 .category { display: flex; justify-content: space-between; gap: 16px; font-size: .875rem; color: var(--muted); }
 .content h3 { margin: 16px 0 32px; font-size: clamp(1.75rem, 3vw, 2.5rem); line-height: 1.1; letter-spacing: -.03em; text-wrap: balance; }
 .description { color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0 0 24px; max-width: 60ch; text-wrap: pretty; }
@@ -75,6 +74,6 @@
   .pinned { height: auto; }
   .pinned .stage { position: relative; top: auto; }
   .pinned .scenes { gap: 48px; overflow: visible; }
-  .pinned .card { grid-area: auto; }
+  .pinned .card { grid-area: auto; transform: none; }
   .pinned .demo, .pinned .content { transform: none; opacity: 1; }
 }

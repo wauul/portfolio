@@ -12,7 +12,7 @@ Applied [TypeUI fundamentals](https://github.com/bergside/typeui/blob/main/skill
 - Centered mobile paragraphs made long descriptions harder to scan. Project descriptions are left aligned with restrained line lengths and 1.6 line height.
 - Large repeated vertical gaps interrupted the relationship between projects. A shared frame and progress indicator now communicate one collection.
 - Unicode symbols and repeated project names in the demo placeholders added noise. Replaced the symbols with the existing Feather icon family and kept one primary project title.
-- Animated body text and overlapping descriptions hurt readability. Descriptions stay in place and switch at the transition midpoint; only demo panels move and scale.
+- Overlapping descriptions hurt readability. Each complete project now slides horizontally in its own lane, without crossfading text. A small relative offset on the demo adds depth. Reading intervals use the exact same chapter timing function as My Journey, including a final-project pause.
 - Chapter buttons and repository links have at least 44px target height. Inactive pinned scenes are inert and hidden from assistive technology. Reduced motion and viewports that cannot fit the content show all projects in ordinary document flow.
 
 ## Intentional choices
