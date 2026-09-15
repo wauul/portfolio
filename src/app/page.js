@@ -11,6 +11,7 @@ import ScrollStory from "./components/ScrollStory";
 import HeroSculpture from "./components/HeroSculpture";
 import DownloadCV from "./components/DownloadCV";
 import ContactForm from "./components/ContactForm";
+import PersonalProjects from "./components/PersonalProjects";
 const projects = [
   {
     id: "01",
@@ -251,6 +252,7 @@ function Portfolio() {
         >
           {[
             ["work", t("Selected work")],
+            ["personal-projects", t("Personal projects")],
             ["about", t("About")],
             ["experience", t("Experience")],
           ].map(([id, label]) => (
@@ -378,10 +380,11 @@ function Portfolio() {
             <Arrow />
           </a>
         </section>
+        <PersonalProjects />
         <section className="about-section" id="about">
           <div className="section-wrap about-grid">
             <div>
-              <p className="eyebrow">{t("02 / HOW I THINK") + " "}</p>
+              <p className="eyebrow">{t("03 / HOW I THINK") + " "}</p>
               <h2>
                 {t("Curious by nature.") + " "}
                 <br />
@@ -438,7 +441,7 @@ function Portfolio() {
         <section className="section-wrap experience-section" id="experience">
           <div className="section-heading">
             <div>
-              <p className="eyebrow">{t("03 / THE JOURNEY") + " "}</p>
+              <p className="eyebrow">{t("04 / THE JOURNEY") + " "}</p>
               <h2>
                 {t("Always building.") + " "}
                 <br />

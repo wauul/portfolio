@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-export const CONTACT_RECIPIENT = "wael.fezari@epitech.eu";
+export const CONTACT_RECIPIENT = "waelfezari@gmail.com";
 const EMAIL = /^[^\s@<>\r\n]+@[^\s@<>\r\n]+\.[^\s@<>\r\n]+$/;
 export function validateContact(input) {
   if (!input || typeof input !== "object" || Array.isArray(input)) return null;

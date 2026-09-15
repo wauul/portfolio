@@ -1,0 +1,80 @@
+.section { padding-block: 96px; }
+.heading { display: flex; align-items: end; justify-content: space-between; gap: 48px; margin-bottom: 48px; text-align: start; }
+.heading .eyebrow, .heading :global(.eyebrow) { margin: 0 0 24px; font-size: .875rem; letter-spacing: .08em; color: var(--muted); }
+.heading h2 { font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1; letter-spacing: -.03em; margin: 0 0 32px; text-wrap: balance; }
+.heading h2 em { font-family: Georgia, serif; font-weight: 400; color: var(--orange); }
+.heading > p { max-width: 40ch; font-size: 1rem; line-height: 1.6; color: var(--muted); margin: 0 0 32px; text-align: start; }
+.track { position: relative; --pin-top: 110px; }
+.stage { position: relative; background: var(--paper); border: 1px solid var(--line); border-radius: 24px; padding: 24px; }
+.pinned { height: 650svh; }
+.pinned .stage { position: sticky; top: var(--pin-top); }
+.stageHeader { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 40px; margin-bottom: 16px; color: var(--muted); font-size: .875rem; }
+.scenes { display: grid; gap: 48px; }
+.card { min-width: 0; display: grid; grid-template-columns: 1.08fr 1fr; align-items: center; gap: 48px; scroll-margin-top: 128px; }
+.pinned .scenes { gap: 0; overflow: clip; padding: 8px; margin: -8px; }
+.pinned .card { grid-area: 1 / 1; pointer-events: none; }
+.pinned .card:not([inert]) { pointer-events: auto; }
+.demo { display: flex; flex-direction: column; position: relative; min-width: 0; background: color-mix(in srgb, var(--ink) 5%, var(--paper)); border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
+.pinned .demo { opacity: var(--scene-opacity, 0); transform: translate3d(0, var(--visual-y, 0%), 0) scale(var(--visual-scale, 1)); }
+.demoBar { display: flex; justify-content: space-between; gap: 16px; font-size: .875rem; color: var(--muted); padding-bottom: 16px; }
+.screen { position: relative; display: grid; place-items: center; min-height: 320px; overflow: hidden; background-image: radial-gradient(var(--line) 1px, transparent 1px); background-size: 24px 24px; }
+.screen img { object-fit: contain; background: var(--paper); }
+.placeholder { display: flex; align-items: center; flex-direction: column; gap: 24px; padding: 24px 16px; text-align: center; }
+.symbol { width: 64px; height: 64px; stroke-width: 1; color: var(--orange); }
+.pending { font-size: .875rem; color: var(--muted); }
+.play { align-self: center; min-height: 44px; border: 1px solid var(--muted); border-radius: 8px; background: var(--paper); color: var(--ink); padding: 8px 16px; margin-top: 16px; font-size: 1rem; white-space: nowrap; }
+.content { min-width: 0; text-align: start; padding: 8px 0; }
+.pinned .content { opacity: 1; }
+.pinned .card[inert] .content { visibility: hidden; }
+.category { display: flex; justify-content: space-between; gap: 16px; font-size: .875rem; color: var(--muted); }
+.content h3 { margin: 16px 0 32px; font-size: clamp(1.75rem, 3vw, 2.5rem); line-height: 1.1; letter-spacing: -.03em; text-wrap: balance; }
+.description { color: var(--muted); font-size: 1rem; line-height: 1.6; margin: 0 0 24px; max-width: 60ch; text-wrap: pretty; }
+.skillsLabel { font-size: .875rem; color: var(--muted); margin: 0 0 8px; }
+.skills { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0 0 24px; }
+.skills li { border: 1px solid var(--line); padding: 4px 8px; border-radius: 8px; font-size: .75rem; line-height: 1.5; }
+.github { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 1rem; border-bottom: 1px solid var(--muted); }
+.github svg { width: 20px; height: 20px; flex-shrink: 0; }
+.github:hover { color: var(--orange); }
+.footer { margin-top: 16px; }
+.chapters { display: flex; gap: 8px; justify-content: space-between; }
+.chapters button { min-width: 44px; min-height: 44px; border: 0; border-radius: 8px; color: var(--muted); background: transparent; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 8px; white-space: nowrap; font-size: 1rem; flex-shrink: 0; }
+.chapterName { font-size: .875rem; }
+.chapters button[aria-current] { color: var(--ink); background: color-mix(in srgb, var(--ink) 8%, var(--paper)); font-weight: 700; }
+.chapters button:hover, .play:hover { background: color-mix(in srgb, var(--ink) 8%, var(--paper)); }
+.chapters button:active, .play:active { background: color-mix(in srgb, var(--ink) 14%, var(--paper)); }
+.chapters button:focus-visible, .play:focus-visible, .github:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+.progress { height: 2px; margin-top: 8px; background: var(--line); }
+.progress span { display: block; height: 100%; background: var(--orange); transform: scaleX(var(--progress, 0)); transform-origin: left; }
+@media (max-width: 1100px) {
+  .chapterName { display: none; }
+  .card { gap: 24px; }
+  .screen { min-height: 280px; }
+}
+@media (max-width: 760px) {
+  .section { padding-block: 48px; }
+  .heading { display: block; margin-bottom: 32px; }
+  .heading > p { margin: 0; }
+  .stage { padding: 16px; border-radius: 16px; }
+  .stageHeader > span:first-child { display: none; }
+  .card { grid-template-columns: 1fr; gap: 16px; }
+  .demo { padding: 12px; border-radius: 12px; }
+  .demoBar { padding-bottom: 8px; }
+  .screen { min-height: 140px; }
+  .placeholder { gap: 12px; padding: 16px 8px; }
+  .symbol { width: 40px; height: 40px; }
+  .content h3 { font-size: 1.75rem; }
+  .description { margin-bottom: 16px; }
+  .skills { margin-bottom: 16px; }
+  .chapters button { padding: 0; }
+}
+@media (max-width: 380px) {
+  .stage { padding: 12px; }
+  .chapters { gap: 4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pinned { height: auto; }
+  .pinned .stage { position: relative; top: auto; }
+  .pinned .scenes { gap: 48px; overflow: visible; }
+  .pinned .card { grid-area: auto; }
+  .pinned .demo, .pinned .content { transform: none; opacity: 1; }
+}
