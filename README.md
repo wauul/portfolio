@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Wael Fezari — Portfolio
 
 A Next.js portfolio focused on full-stack development and applied AI. The homepage uses a custom responsive design, lightweight scroll parallax and accessible native project disclosures.
@@ -110,4 +109,3 @@ All submissions go to the fixed address `wael.fezari@epitech.eu`. The visitor em
 The route validates fields, limits request size, rejects cross-origin browser submissions, uses a honeypot and per-instance burst limiting, and sends plain text. Retrying an unchanged submission reuses the Resend idempotency key. Burst limits are in memory, not a distributed anti-spam guarantee; enable hosting-level protections if traffic warrants it.
 
 Run `pnpm test` for contact validation, delivery-failure, retry and visitor-service tests. Tests mock external providers and send no real emails.
->>>>>>> 0fae1e0f85cc6906ce5fe9760ab44c6a6c8948e7
