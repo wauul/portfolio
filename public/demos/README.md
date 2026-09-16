@@ -3,10 +3,10 @@
 Place recordings here as `rag-bench.gif`, `study-room.gif`, `watchtower.gif`,
 `are-we-vibing.gif`, `recipe-buddy.gif`, and `hooka-relay.gif`.
 
-Set the corresponding `demo` field in `src/app/lib/personal-projects.js` to
-`/demos/<filename>.gif`. Until then, each project displays a designed placeholder.
-GIFs play only when the visitor chooses Play demo and can be stopped. Failed
-images return to a readable placeholder. Recordings are shown without cropping.
+Each project is mapped to `/demos/<id>.gif` in
+`src/app/lib/personal-projects.js`. GIFs display and animate automatically;
+failed images return to a readable placeholder. Recordings are shown without
+cropping.
 
 The section pins one stage below the site header while scrolling through all six
 projects. Vertical scrolling moves complete projects horizontally like a carousel,

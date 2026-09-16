@@ -9,15 +9,14 @@ import { journeyFrame } from "../lib/journey.mjs";
 import styles from "./PersonalProjects.module.css";
 
 const icons = { "rag-bench": FiDatabase, "study-room": FiBookOpen, watchtower: FiTrendingDown, "are-we-vibing": FiHeadphones, "recipe-buddy": FiBookOpen, "hooka-relay": FiRadio };
-function Demo({ project, french, active }) {
-  const [playing, setPlaying] = useState(false);
+function Demo({ project, french }) {
   const [failed, setFailed] = useState(false);
   const Icon = icons[project.id];
   return (
     <div className={styles.demo}>
       <div className={styles.demoBar}><span>{french ? "Démonstration" : "Project demo"}</span></div>
       <div className={styles.screen}>
-        {project.demo && playing && active && !failed ? (
+        {project.demo && !failed ? (
           <Image src={project.demo} alt={`${french ? "Démonstration de" : "Demo of"} ${project.name}`} fill unoptimized sizes="(max-width: 760px) 90vw, 55vw" onError={() => setFailed(true)} />
         ) : (
           <div className={styles.placeholder}>
@@ -26,7 +25,6 @@ function Demo({ project, french, active }) {
           </div>
         )}
       </div>
-      {project.demo && !failed && <button type="button" aria-pressed={playing && active} className={styles.play} onClick={() => setPlaying(!playing)}>{playing ? (french ? "Arrêter la démo" : "Stop demo") : (french ? "Lire la démo" : "Play demo")}</button>}
     </div>
   );
 }
@@ -153,7 +151,7 @@ export default function PersonalProjects() {
             <div ref={scenes} className={styles.scenes}>
           {personalProjects.map((project, index) => (
             <article key={project.id} id={`project-${project.id}`} className={styles.card} aria-labelledby={`title-${project.id}`} onClick={(event) => openProject(event, project.live)}>
-              <Demo project={project} french={french} active={!pinned || active === index} />
+              <Demo project={project} french={french} />
               <div className={styles.content}>
                 <div className={styles.category}><span>{project.category[locale]}</span><span>{String(index + 1).padStart(2, "0")} / 06</span></div>
                 <h3 id={`title-${project.id}`}>{project.name}</h3><p className={styles.description}>{project.description[locale]}</p>

@@ -22,7 +22,7 @@ The user will supply GIF recordings later, so explicitly labelled demo placehold
 
 ## Control behavior
 
-Chapter buttons support default, hover, active, keyboard focus and current-step states. Activating a chapter jumps directly to its scroll position. Demo buttons support default, hover, active, focus and pressed states; image failure returns to a readable placeholder. No timers advance projects or autoplay recordings.
+Chapter buttons support default, hover, active, keyboard focus and current-step states. Activating a chapter jumps directly to its scroll position. Project recordings animate automatically without extra controls; image failure returns to a readable placeholder. No timers advance projects.
 
 Partial horizontal transitions settle to the nearest complete project after scrolling pauses. Settling waits for touch release, respects reduced motion, and does not pull visitors back once they have scrolled outside the pinned section.
 
@@ -33,5 +33,5 @@ Partial horizontal transitions settle to the nearest complete project after scro
 - Clicking the Hooka Relay chapter selected the sixth project and completed the progress line.
 - Accessibility snapshots exposed only the current pinned project plus all six chapter buttons.
 - Earlier checks at 390px and 320px widths found no horizontal page overflow. After removing the height fallback, the actual in-app preview showed a fixed frame while reverse scrolling transitioned from Hooka Relay to Recipe Buddy. A 390 × 700 check retained the pinned frame and scrolling advanced from R We Vibing? to Recipe Buddy. The temporary viewport override was reset.
-- GIF playback awaits the user's recordings; no demo was represented as an existing recording.
+- All six user-provided GIF recordings are mapped to their projects and animate automatically.
 - Snap verification in the in-app browser: a partial forward scroll settled on Study Room with a 0% slide offset, and a reverse scroll settled on RAG Bench with a 0% offset. At 390 × 700, a forward scroll also settled on Study Room at 0%, with pinning retained. Build and lint passed after the snap change.
