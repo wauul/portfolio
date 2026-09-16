@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React, { useState, useEffect, useRef } from 'react';
 import Slider from 'react-slick';
 import { motion } from 'framer-motion';
@@ -141,7 +142,7 @@ const ProjectCard = ({ project, onClick, isExpanded, onExpand , theme}) => (
     whileTap={{ scale: 0.95 }}
     onClick={onExpand}
   >
-    <img src={project.screenshot} alt={project.name} className="object-cover h-32 w-full" />
+    <Image width={640} height={360} src={project.screenshot} alt={project.name} className="object-cover h-32 w-full" />
     <div className="p-4">
       <h3 className="text-xl font-bold mb-2">{project.name}</h3>
       <p className="mb-4">{isExpanded ? project.longDescription : project.shortDescription}</p>
@@ -171,7 +172,7 @@ const ProjectModalContent = ({ project }) => (
     animate={{ scale: 1, opacity: 1 }}
     transition={{ duration: 0.3 }}
   >
-    <img src={project.screenshots[1]} alt={project.name} className="rounded-lg mb-4 w-full h-auto" />
+    <Image width={960} height={540} src={project.screenshots[1] || project.screenshot} alt={project.name} className="rounded-lg mb-4 w-full h-auto" />
     <h2 className="text-2xl font-bold mb-2">{project.name}</h2>
     <p className="mb-4">{project.longDescription}</p>
     {/* Additional project details can be added here */}
