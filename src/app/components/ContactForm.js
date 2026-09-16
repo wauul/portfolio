@@ -73,10 +73,6 @@ export default function ContactForm() {
             ? "Un projet, une opportunité ou simplement une envie d’échanger ? Racontez-moi."
             : "A project, an opportunity, or just a conversation? Tell me about it."}
         </p>
-        <a className="direct-email-cta" href="mailto:waelfezari@gmail.com">
-          {fr ? "M’écrire par email" : "Email me"}
-          <span aria-hidden="true">↗</span>
-        </a>
       </div>
       <form
         className="contact-form"

@@ -411,7 +411,6 @@ function Portfolio() {
                   "After two years at ROKI and independent client work, I\u2019m looking for a team where I can keep building ambitious software and practical AI.",
                 ) + " "}
               </p>
-              <DownloadCV compact />
             </div>
             <div className="capabilities">
               <div>
@@ -512,14 +511,6 @@ function Portfolio() {
               {t("Have something") + " "}
               <br />
               <em>{t("in mind?") + " "}</em>
-              <a
-                href="mailto:waelfezari@gmail.com"
-                aria-label={t("Email Wael Fezari")}
-                className="contact-arrow"
-              >
-                <span>{t("Email me")}</span>
-                ↗
-              </a>
             </h2>
             <ContactForm />
             <div className="contact-bottom">

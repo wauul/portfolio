@@ -37,14 +37,17 @@ export default function PersonalProjects() {
   const locale = french ? 1 : 0;
   const track = useRef(null);
   const stage = useRef(null);
+  const scenes = useRef(null);
   const [pinned, setPinned] = useState(false);
   const [active, setActive] = useState(0);
   const pinnedRef = useRef(false);
   const activeRef = useRef(0);
   useEffect(() => {
     const root = track.current;
-    const cards = Array.from(root.querySelectorAll("article"));
+    const scroller = scenes.current;
+    const cards = Array.from(scroller.querySelectorAll("article"));
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const mobile = window.matchMedia("(max-width: 760px)");
     let frame = 0;
     let settleTimer = 0;
     let touching = false;
@@ -75,12 +78,14 @@ export default function PersonalProjects() {
       root.style.setProperty("--pin-top", `${top}px`);
       // The carousel must remain a carousel in short browser panels too.
       // Its viewport adapts in CSS; long copy can scroll inside its own panel.
-      const canPin = true;
+      const canPin = !mobile.matches;
       if (pinnedRef.current !== canPin) { pinnedRef.current = canPin; setPinned(canPin); }
       const distance = Math.max(1, root.offsetHeight - stage.current.offsetHeight);
       const progress = canPin ? Math.max(0, Math.min(1, (top - root.getBoundingClientRect().top) / distance)) : 0;
       // Use the journey's exact chapter timing; travel horizontally instead of fading.
-      const { index: chapter, blend, active: current } = journeyFrame(progress, cards.length);
+      const mobileIndex = Math.max(0, Math.min(cards.length - 1, Math.round(scroller.scrollLeft / Math.max(1, scroller.clientWidth))));
+      const { index: chapter, blend, active: journeyActive } = journeyFrame(progress, cards.length);
+      const current = canPin ? journeyActive : mobileIndex;
       const position = media.matches ? current : chapter + blend;
       if (activeRef.current !== current) { activeRef.current = current; setActive(current); }
       root.style.setProperty("--progress", String(progress));
@@ -88,7 +93,7 @@ export default function PersonalProjects() {
         const delta = index - position;
         card.style.setProperty("--slide-x", canPin ? `${delta * 108}%` : "0%");
         card.style.setProperty("--visual-depth", canPin ? `${-delta * 6}%` : "0%");
-        card.style.visibility = media.matches ? (index === current ? "visible" : "hidden") : Math.abs(delta) <= 1 ? "visible" : "hidden";
+        card.style.visibility = !canPin ? "visible" : media.matches ? (index === current ? "visible" : "hidden") : Math.abs(delta) <= 1 ? "visible" : "hidden";
         card.inert = canPin && index !== current;
         if (canPin && index !== current) card.setAttribute("aria-hidden", "true");
         else card.removeAttribute("aria-hidden");
@@ -100,7 +105,9 @@ export default function PersonalProjects() {
     window.addEventListener("touchend", onTouchEnd, { passive: true });
     window.addEventListener("touchcancel", onTouchEnd, { passive: true });
     window.addEventListener("resize", schedule);
+    scroller.addEventListener("scroll", schedule, { passive: true });
     media.addEventListener("change", schedule);
+    mobile.addEventListener("change", schedule);
     const observer = new ResizeObserver(schedule);
     cards.forEach(card => observer.observe(card));
     observer.observe(root);
@@ -111,13 +118,21 @@ export default function PersonalProjects() {
       window.removeEventListener("touchend", onTouchEnd);
       window.removeEventListener("touchcancel", onTouchEnd);
       window.removeEventListener("resize", schedule);
+      scroller.removeEventListener("scroll", schedule);
       media.removeEventListener("change", schedule);
+      mobile.removeEventListener("change", schedule);
       observer.disconnect();
       cancelAnimationFrame(frame);
       clearTimeout(settleTimer);
     };
   }, []);
   function jumpTo(index) {
+    if (window.matchMedia("(max-width: 760px)").matches) {
+      const scroller = scenes.current;
+      const card = scroller.children[index];
+      scroller.scrollTo({ left: card.offsetLeft - scroller.offsetLeft, behavior: "smooth" });
+      return;
+    }
     const root = track.current;
     const start = window.scrollY + root.getBoundingClientRect().top - parseFloat(root.style.getPropertyValue("--pin-top"));
     window.scrollTo({ top: start + (root.offsetHeight - stage.current.offsetHeight) * (index + 0.15) / personalProjects.length, behavior: "instant" });
@@ -135,7 +150,7 @@ export default function PersonalProjects() {
         <div ref={track} className={`${styles.track} ${pinned ? styles.pinned : ""}`} data-pinned={pinned}>
           <div ref={stage} className={styles.stage}>
             <div className={styles.stageHeader}><span>{french ? "Le laboratoire personnel" : "The personal lab"}</span><span>{pinned ? (french ? "Défilez pour explorer" : "Scroll to explore") : (french ? "Six projets à découvrir" : "Six projects to explore")}</span></div>
-            <div className={styles.scenes}>
+            <div ref={scenes} className={styles.scenes}>
           {personalProjects.map((project, index) => (
             <article key={project.id} id={`project-${project.id}`} className={styles.card} aria-labelledby={`title-${project.id}`} onClick={(event) => openProject(event, project.live)}>
               <Demo project={project} french={french} active={!pinned || active === index} />
@@ -152,12 +167,12 @@ export default function PersonalProjects() {
             </article>
           ))}
             </div>
-            {pinned && <div className={styles.footer}>
+            <div className={styles.footer}>
               <div className={styles.chapters} aria-label={french ? "Choisir un projet" : "Choose a project"}>
                 {personalProjects.map((project, index) => <button type="button" key={project.id} aria-label={project.name} aria-current={active === index ? "step" : undefined} onClick={() => jumpTo(index)}><span>{String(index + 1).padStart(2, "0")}</span><span className={styles.chapterName}>{project.name}</span></button>)}
               </div>
               <div className={styles.progress} aria-hidden="true"><span /></div>
-            </div>}
+            </div>
           </div>
         </div>
     </section>

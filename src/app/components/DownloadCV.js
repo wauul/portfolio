@@ -1,11 +1,11 @@
 "use client";
 import { usePreferences } from "./Preferences";
-export default function DownloadCV({ compact = false }) {
+export default function DownloadCV() {
   const { language } = usePreferences();
   const fr = language === "fr";
   return (
     <a
-      className={`download-card ${compact ? "download-compact" : ""}`}
+      className="download-card"
       href={`/api/cv?lang=${language}`}
       download={`Wael-Fezari-CV-${language.toUpperCase()}.pdf`}
     >

@@ -39,7 +39,8 @@
 .live svg, .github svg { width: 20px; height: 20px; flex-shrink: 0; }
 .live:hover { filter: brightness(.92); }
 .github:hover { color: var(--orange); }
-.footer { margin-top: 16px; }
+.footer { display: none; margin-top: 16px; }
+.pinned .footer { display: block; }
 .chapters { display: flex; gap: 8px; justify-content: space-between; }
 .chapters button { min-width: 44px; min-height: 44px; border: 0; border-radius: 8px; color: var(--muted); background: transparent; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 8px; white-space: nowrap; font-size: 1rem; flex-shrink: 0; }
 .chapterName { font-size: .875rem; }
@@ -60,7 +61,9 @@
   .heading > p { margin: 0; }
   .stage { padding: 16px; border-radius: 16px; }
   .stageHeader > span:first-child { display: none; }
-  .card { grid-template-columns: 1fr; gap: 16px; }
+  .scenes { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-inline: contain; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .scenes::-webkit-scrollbar { display: none; }
+  .card { flex: 0 0 100%; grid-template-columns: 1fr; gap: 16px; scroll-snap-align: start; scroll-snap-stop: always; }
   .pinned .card { grid-template-rows: minmax(100px, .35fr) minmax(0, 1fr); }
   .demo { padding: 12px; border-radius: 12px; }
   .demoBar { padding-bottom: 8px; }
@@ -70,7 +73,13 @@
   .content h3 { font-size: 1.75rem; }
   .description { margin-bottom: 16px; }
   .skills { margin-bottom: 16px; }
+  .footer { display: block; margin-top: 8px; }
+  .chapters { justify-content: center; gap: 2px; }
   .chapters button { padding: 0; }
+  .chapters button > span:first-child { width: 8px; height: 8px; border-radius: 999px; background: var(--line); color: transparent; overflow: hidden; }
+  .chapters button[aria-current] { background: transparent; }
+  .chapters button[aria-current] > span:first-child { width: 22px; background: var(--orange); }
+  .progress { display: none; }
 }
 @media (max-width: 380px) {
   .stage { padding: 12px; }
