@@ -1,5 +1,11 @@
 export const personalProjects = [
   {
+    id: "hooka-relay", name: "Hooka Relay", symbol: "⇄", category: ["Developer infrastructure", "Infrastructure développeur"],
+    description: ["A webhook delivery service built around reliability. Queue events, sign deliveries, retry failures and replay attempts from a dashboard, with circuit breakers and AI-assisted failure diagnosis.", "Un service de livraison de webhooks axé sur la fiabilité. Mettez les événements en file, signez les envois et relancez les tentatives depuis un tableau de bord, avec coupe-circuits et diagnostic assisté par IA."],
+    skills: ["TypeScript", "Next.js", "Node.js", "RabbitMQ", "PostgreSQL", "Docker"],
+    github: "https://github.com/wauul/hooka-relay", live: "https://hooka-relay.vercel.app", demo: "/demos/hooka-relay.gif",
+  },
+  {
     id: "rag-bench", name: "RAG Bench", symbol: "◈", category: ["AI evaluation", "Évaluation IA"],
     description: ["A playground for comparing document retrieval pipelines. Tune chunking, embeddings and reranking, then inspect generated answers, source passages and Ragas evaluation metrics side by side.", "Un laboratoire pour comparer des pipelines de recherche documentaire. Ajustez le découpage, les embeddings et le reclassement, puis comparez les réponses, les sources et les métriques Ragas."],
     skills: ["Python", "FastAPI", "Streamlit", "Chroma", "Ragas", "Sentence Transformers"],
@@ -29,10 +35,5 @@ export const personalProjects = [
     skills: ["TypeScript", "Next.js", "React", "Prisma", "PostgreSQL", "Groq", "NextAuth"],
     github: "https://github.com/wauul/recipe-buddy", live: "https://recipe-buddy.vercel.app", demo: "/demos/recipe-buddy.gif",
   },
-  {
-    id: "hooka-relay", name: "Hooka Relay", symbol: "⇄", category: ["Developer infrastructure", "Infrastructure développeur"],
-    description: ["A webhook delivery service built around reliability. Queue events, sign deliveries, retry failures and replay attempts from a dashboard, with circuit breakers and AI-assisted failure diagnosis.", "Un service de livraison de webhooks axé sur la fiabilité. Mettez les événements en file, signez les envois et relancez les tentatives depuis un tableau de bord, avec coupe-circuits et diagnostic assisté par IA."],
-    skills: ["TypeScript", "Next.js", "Node.js", "RabbitMQ", "PostgreSQL", "Docker"],
-    github: "https://github.com/wauul/hooka-relay", live: "https://hooka-relay.vercel.app", demo: "/demos/hooka-relay.gif",
-  },
+  
 ];
