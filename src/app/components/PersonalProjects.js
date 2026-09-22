@@ -8,7 +8,7 @@ import { personalProjects } from "../lib/personal-projects";
 import { journeyFrame } from "../lib/journey.mjs";
 import styles from "./PersonalProjects.module.css";
 
-const icons = { "rag-bench": FiDatabase, "study-room": FiBookOpen, watchtower: FiTrendingDown, "are-we-vibing": FiHeadphones, "recipe-buddy": FiBookOpen, "hooka-relay": FiRadio };
+const icons = {"hooka-relay": FiRadio , "rag-bench": FiDatabase, "study-room": FiBookOpen, watchtower: FiTrendingDown, "are-we-vibing": FiHeadphones, "recipe-buddy": FiBookOpen};
 function Demo({ project, french }) {
   const [failed, setFailed] = useState(false);
   const Icon = icons[project.id];
