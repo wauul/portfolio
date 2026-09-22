@@ -86,4 +86,4 @@ The project is ready to deploy on [Vercel](https://vercel.com). Add the environm
 
 ## License
 
-This repository is intended as a personal portfolio. Its content and assets are not licensed for reuse without permission.
+Run `pnpm test` for contact validation, delivery-failure, retry and visitor-service tests. Tests mock external providers and send no real emails.
