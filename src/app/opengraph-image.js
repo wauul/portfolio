@@ -8,8 +8,8 @@ export default function Image() {
     (
       <div
         style={{
-          background: "#f5f3ec",
-          color: "#242720",
+          background: "#111214",
+          color: "#f1f2f4",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -18,17 +18,18 @@ export default function Image() {
           justifyContent: "space-between",
         }}
       >
-        <div style={{ display: "flex", fontSize: 32 }}>WF.</div>
+        <div style={{ display: "flex", fontSize: 32 }}>WF / Wael Fezari</div>
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            fontSize: 76,
-            letterSpacing: -4,
+            fontSize: 78,
+            letterSpacing: -3,
           }}
         >
-          <span>L’idée. Le code.</span>
-          <span style={{ color: "#bb481e" }}>Le possible.</span>
+          <span>Interfaces</span>
+          <span>Intelligence</span>
+          <span style={{ color: "#ff785b" }}>Intégrations</span>
         </div>
         <div style={{ display: "flex", fontSize: 22 }}>
           Wael Fezari / Full-stack development & applied AI

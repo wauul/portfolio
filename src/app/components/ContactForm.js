@@ -2,17 +2,37 @@
 import { useRef, useState } from "react";
 import { usePreferences } from "./Preferences";
 import SocialLinks from "./SocialLinks";
+import { FiSend, FiCheckCircle } from "react-icons/fi";
 export default function ContactForm() {
   const { language } = usePreferences();
   const fr = language === "fr";
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState("");
+  const [fields, setFields] = useState({});
+  function fieldError(field) {
+    const value = field.value.trim();
+    if (field.name === "name" && (value.length < 2 || value.length > 80 || /[\r\n\x00-\x1f]/.test(value))) return fr ? "Indiquez votre nom (2 à 80 caractères)." : "Enter your name (2–80 characters).";
+    if (field.name === "email" && (!value || !field.validity.valid)) return fr ? "Indiquez une adresse email valide." : "Enter a valid email address.";
+    if (field.name === "phone" && value && !/^[+\d\s().-]{6,40}$/.test(value)) return fr ? "Vérifiez le numéro (6 à 40 caractères)." : "Check the phone number (6–40 characters).";
+    if (field.name === "message" && (value.length < 20 || value.length > 5000)) return fr ? "Écrivez un message de 20 à 5 000 caractères." : "Write a message of 20–5,000 characters.";
+    return "";
+  }
   const id = useRef(null);
   const pending = useRef(false);
   async function submit(event) {
     event.preventDefault();
     if (pending.current) return;
     const form = event.currentTarget;
+    const invalid = {};
+    for (const name of ["name", "email", "phone", "message"]) {
+      const message = fieldError(form.elements.namedItem(name));
+      if (message) invalid[name] = message;
+    }
+    setFields(invalid);
+    if (Object.keys(invalid).length) {
+      form.elements.namedItem(Object.keys(invalid)[0]).focus();
+      return;
+    }
     const values = Object.fromEntries(new FormData(form));
     if (!id.current) id.current = crypto.randomUUID();
     pending.current = true;
@@ -33,6 +53,7 @@ export default function ContactForm() {
       }
       setStatus("sent");
       form.reset();
+      setFields({});
       id.current = null;
     } catch {
       setError("delivery");
@@ -60,13 +81,8 @@ export default function ContactForm() {
   return (
     <div className="contact-workspace">
       <div className="contact-invitation">
-        <p className="eyebrow">
-          {fr ? "FAISONS CONNAISSANCE" : "LET’S GET ACQUAINTED"}
-        </p>
         <h3>
-          {fr ? "La prochaine belle idée" : "The next great idea"}
-          <br />
-          <em>{fr ? "commence ici." : "starts here."}</em>
+          {fr ? "Parlons de votre projet" : "Tell me what you’re building"}
         </h3>
         <p>
           {fr
@@ -76,7 +92,14 @@ export default function ContactForm() {
       </div>
       <form
         className="contact-form"
+        noValidate
+        aria-busy={status === "sending"}
         onSubmit={submit}
+        onBlur={(event) => {
+          if (!["name", "email", "phone", "message"].includes(event.target.name)) return;
+          const field = event.target;
+          setFields(previous => ({ ...previous, [field.name]: fieldError(field) }));
+        }}
         onChange={() => {
           if (!pending.current) {
             id.current = null;
@@ -94,6 +117,8 @@ export default function ContactForm() {
               <span aria-hidden="true"> *</span>
               <input
                 name="name"
+                aria-invalid={Boolean(fields.name)}
+                aria-describedby={fields.name ? "name-error" : undefined}
                 autoComplete="name"
                 required
                 minLength={2}
@@ -102,18 +127,22 @@ export default function ContactForm() {
                   fr ? "Comment vous appelez-vous ?" : "What’s your name?"
                 }
               />
+              {fields.name && <span className="field-error" id="name-error">{fields.name}</span>}
             </label>
             <label>
               {fr ? "Adresse email" : "Email address"}
               <span aria-hidden="true"> *</span>
               <input
                 name="email"
+                aria-invalid={Boolean(fields.email)}
+                aria-describedby={fields.email ? "email-error" : undefined}
                 type="email"
                 autoComplete="email"
                 required
                 maxLength={254}
-                placeholder="vous@exemple.com"
+                placeholder={fr ? "vous@exemple.com" : "you@example.com"}
               />
+              {fields.email && <span className="field-error" id="email-error">{fields.email}</span>}
             </label>
           </div>
           <label>
@@ -123,17 +152,22 @@ export default function ContactForm() {
             </span>
             <input
               name="phone"
+              aria-invalid={Boolean(fields.phone)}
+              aria-describedby={fields.phone ? "phone-error" : undefined}
               type="tel"
               autoComplete="tel"
               maxLength={40}
               placeholder="+33 6 …"
             />
+            {fields.phone && <span className="field-error" id="phone-error">{fields.phone}</span>}
           </label>
           <label>
             {fr ? "Votre message" : "Your message"}
             <span aria-hidden="true"> *</span>
             <textarea
               name="message"
+              aria-invalid={Boolean(fields.message)}
+              aria-describedby={fields.message ? "message-error" : undefined}
               required
               minLength={20}
               maxLength={5000}
@@ -144,6 +178,7 @@ export default function ContactForm() {
                   : "Tell me about your project, your team or your idea…"
               }
             />
+            {fields.message && <span className="field-error" id="message-error">{fields.message}</span>}
           </label>
           <div className="form-honeypot" aria-hidden="true">
             <label>
@@ -165,7 +200,7 @@ export default function ContactForm() {
                 : fr
                   ? "Envoyer le message"
                   : "Send message"}
-              <span aria-hidden="true">↗</span>
+              {status === "sent" ? <FiCheckCircle aria-hidden="true" /> : <FiSend aria-hidden="true" />}
             </button>
           </div>
         </fieldset>
@@ -183,7 +218,7 @@ export default function ContactForm() {
           ) : status === "error" ? (
             <>
               {errorText}{" "}
-              <a href="mailto:waelfezari@gmail.com">waelfezari@gmail.com ↗</a>
+              <a href="mailto:waelfezari@gmail.com">waelfezari@gmail.com</a>
             </>
           ) : null}
         </div>

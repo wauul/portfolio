@@ -1,10 +1,35 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
 import french from "../lib/fr.json";
+import { FiGlobe, FiChevronDown, FiSun, FiMoon, FiCheck } from "react-icons/fi";
 const Preferences = createContext(null);
 export function PreferencesProvider({ children }) {
   const [language, setLanguage] = useState("fr");
   const [theme, setTheme] = useState("dark");
+  const [reducedMotion, setReducedMotion] = useState(true);
+  useEffect(() => {
+    const media = matchMedia("(prefers-reduced-motion: reduce)");
+    const sync = () => setReducedMotion(media.matches);
+    sync();
+    media.addEventListener("change", sync);
+    return () => media.removeEventListener("change", sync);
+  }, []);
+  useEffect(() => {
+    document.documentElement.dataset.motion = reducedMotion ? "paused" : "active";
+  }, [reducedMotion]);
+  useEffect(() => {
+    const media = matchMedia("(prefers-color-scheme: dark)");
+    const sync = () => {
+      let stored = null;
+      try { stored = localStorage.getItem("portfolio-theme"); } catch {}
+      if (stored === "dark" || stored === "light") return;
+      const value = media.matches ? "dark" : "light";
+      document.documentElement.dataset.theme = value;
+      setTheme(value);
+    };
+    media.addEventListener("change", sync);
+    return () => media.removeEventListener("change", sync);
+  }, []);
   useEffect(() => {
     let active = true;
     let storedLanguage = null;
@@ -62,7 +87,7 @@ export function PreferencesProvider({ children }) {
   const t = (text) => (language === "fr" ? (french[text] ?? text) : text);
   return (
     <Preferences.Provider
-      value={{ language, theme, changeLanguage, toggleTheme, t }}
+      value={{ language, theme, changeLanguage, toggleTheme, reducedMotion, t }}
     >
       {children}
     </Preferences.Provider>
@@ -91,20 +116,9 @@ export function PreferenceControls() {
         <summary
           aria-label={language === "fr" ? "Langue du site" : "Site language"}
         >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="9" />
-            <ellipse cx="12" cy="12" rx="4" ry="9" />
-            <path d="M3 12h18" />
-          </svg>
+          <FiGlobe aria-hidden="true" />
           {language.toUpperCase()}
-          <svg
-            className="language-chevron"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            style={{ display: "block", flexShrink: 0 }}
-          >
-            <path d="m7 9.5 5 5 5-5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+          <FiChevronDown className="language-chevron" aria-hidden="true" />
         </summary>
         <div className="language-options">
           {[
@@ -123,9 +137,7 @@ export function PreferenceControls() {
               }}
             >
               <span>{label}</span>
-              <span aria-hidden="true">
-                {language === value ? "✓" : value.toUpperCase()}
-              </span>
+                <span aria-hidden="true">{language === value ? <FiCheck /> : value.toUpperCase()}</span>
             </button>
           ))}
         </div>
@@ -133,10 +145,10 @@ export function PreferenceControls() {
       <button
         className="theme-control"
         onClick={toggleTheme}
-        aria-label={language === "fr" ? "Mode sombre" : "Dark mode"}
+        aria-label={language === "fr" ? (theme === "dark" ? "Passer en mode clair" : "Passer en mode sombre") : (theme === "dark" ? "Switch to light mode" : "Switch to dark mode")}
         aria-pressed={theme === "dark"}
       >
-        <span aria-hidden="true">{theme === "dark" ? "☀" : "☾"}</span>
+        {theme === "dark" ? <FiSun aria-hidden="true" /> : <FiMoon aria-hidden="true" />}
       </button>
     </div>
   );

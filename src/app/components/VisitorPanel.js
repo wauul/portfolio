@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { usePreferences } from "./Preferences";
 import WeatherIcon from "./WeatherIcon";
 import { getVisitorInfo, weatherLabel } from "../lib/visitor.mjs";
+import { FiClock, FiMapPin, FiPlus, FiRefreshCw } from "react-icons/fi";
 export default function VisitorPanel() {
   const { language } = usePreferences();
   const fr = language === "fr";
@@ -10,12 +11,15 @@ export default function VisitorPanel() {
   const [info, setInfo] = useState(null);
   const [loading, setLoading] = useState(true);
   const [attempt, setAttempt] = useState(0);
+  const [opened, setOpened] = useState(false);
   useEffect(() => {
+    if (!opened) return;
     setNow(new Date());
     const timer = setInterval(() => setNow(new Date()), 1000);
     return () => clearInterval(timer);
-  }, []);
+  }, [opened]);
   useEffect(() => {
+    if (!opened) return;
     const controller = new AbortController();
     let active = true;
     const timeout = setTimeout(() => controller.abort(), 15000);
@@ -36,7 +40,7 @@ export default function VisitorPanel() {
       clearTimeout(timeout);
       controller.abort();
     };
-  }, [attempt]);
+  }, [attempt, opened]);
   const fallback = loading
     ? fr
       ? "Connexion…"
@@ -49,23 +53,19 @@ export default function VisitorPanel() {
       className="visitor-section visitor-lab section-wrap"
       aria-labelledby="visitor-title"
     >
-      <details>
+      <details onToggle={event => setOpened(event.currentTarget.open)}>
         <summary>
-          <span>{fr ? "LAB INTERACTIF" : "INTERACTIVE LAB"}</span>
+          <span>{fr ? "En direct" : "Live context"}</span>
           <strong>
             {fr ? "Voir le contexte de votre visite" : "View your visit context"}
           </strong>
-          <span aria-hidden="true">+</span>
+          <span aria-hidden="true"><FiPlus /></span>
         </summary>
         <div className="visitor-content">
           <div className="visitor-heading">
         <div>
-          <p className="eyebrow">
-            {fr ? "VOUS ÊTES ICI / EN DIRECT" : "YOU ARE HERE / LIVE"}
-          </p>
           <h2 id="visitor-title">
-            {fr ? "Un petit bout de " : "A little of "}
-            <em>{fr ? "votre monde." : "your world."}</em>
+            {fr ? "Le contexte de votre visite" : "Your visit context"}
           </h2>
         </div>
         <span className="live-indicator">
@@ -76,7 +76,7 @@ export default function VisitorPanel() {
       <div className="visitor-grid">
         <div>
           <span className="visitor-icon" aria-hidden="true">
-            ◷
+            <FiClock />
           </span>
           <span>{fr ? "Heure locale" : "Local time"}</span>
           <strong suppressHydrationWarning>
@@ -92,7 +92,7 @@ export default function VisitorPanel() {
         </div>
         <div>
           <span className="visitor-icon" aria-hidden="true">
-            ◎
+            <FiMapPin />
           </span>
           <span>
             {fr ? "Localisation approximative" : "Approximate location"}
@@ -153,7 +153,7 @@ export default function VisitorPanel() {
         </p>
         {!loading && (!info?.ip || !info?.location || !info?.weather) && (
           <button onClick={() => setAttempt((a) => a + 1)}>
-            {fr ? "Réessayer ↻" : "Retry ↻"}
+            <FiRefreshCw aria-hidden="true" />{fr ? "Réessayer" : "Retry"}
           </button>
         )}
       </div>

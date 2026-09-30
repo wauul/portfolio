@@ -1,6 +1,9 @@
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
+import localFont from "next/font/local";
+const space = localFont({ src: "./fonts/SpaceGrotesk.ttf", variable: "--font-space", display: "swap", weight: "300 700" });
+const mono = localFont({ src: "./fonts/IBMPlexMono.ttf", variable: "--font-mono", display: "swap", weight: "400", preload: false });
 const site = "https://wael-fezari.vercel.app";
 export const metadata = {
   metadataBase: new URL(site),
@@ -9,7 +12,7 @@ export const metadata = {
     "Développeur full-stack à Marseille : interfaces, systèmes connectés et IA appliquée. Python, TypeScript, React et Azure OpenAI. Disponible en CDI et freelance.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "WF · Wael Fezari — L’idée. Le code. Le possible.",
+    title: "Wael Fezari · Interfaces, intelligence, intégrations",
     description:
       "Développement full-stack et IA appliquée. Découvrez mes projets, mon parcours et les possibilités de collaboration.",
     url: site,
@@ -33,11 +36,11 @@ export default function RootLayout({ children }) {
     knowsAbout: ["Python", "TypeScript", "React", "Azure OpenAI", "RAG"],
   };
   return (
-    <html lang="fr" data-theme="dark" suppressHydrationWarning>
+    <html lang="fr" data-theme="dark" className={`${space.variable} ${mono.variable}`} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `try { var theme = localStorage.getItem('portfolio-theme'); document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark'; } catch {}`,
+            __html: `var theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; try { var saved = localStorage.getItem('portfolio-theme'); if (saved === 'light' || saved === 'dark') theme = saved; } catch {} document.documentElement.dataset.theme = theme;`,
           }}
         />
       </head>
