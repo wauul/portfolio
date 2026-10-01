@@ -27,13 +27,14 @@ export default function HeroWorld() {
   useEffect(()=>{
     const root=track.current,stage=root.querySelector('[data-hero-stage]');
     const panels=[...root.querySelectorAll('[data-hero-panel]')];
-    let frame=0;
+    let frame=0,firstUpdate=true;
     function update(){
       frame=0;
       const header=document.querySelector('.site-header').offsetHeight;
       root.style.setProperty('--hero-top',`${header}px`);
       const target=staticMode?0:heroProgress(clamp((header-root.getBoundingClientRect().top)/Math.max(1,root.offsetHeight-stage.offsetHeight)));
-      progress.current=jump.current||staticMode?target:progress.current+(target-progress.current)*.15;
+      progress.current=firstUpdate||jump.current||staticMode?target:progress.current+(target-progress.current)*.15;
+      firstUpdate=false;
       jump.current=false;
       if(Math.abs(target-progress.current)<.0002)progress.current=target;
       const next=heroFrame(progress.current,personalProjects.length);
@@ -115,7 +116,7 @@ export default function HeroWorld() {
     card.style.setProperty('--wake-turn',`${((event.clientX-rect.left)/rect.width-.5)*-3}deg`);
   }
   function sleepArtwork(event){for(const key of ['--wake-x','--wake-y','--wake-turn'])event.currentTarget.style.removeProperty(key);}
-  return <section id="home" ref={track} className={styles.track} data-paused={paused} data-static={staticMode} aria-label={fr?'Wael Fezari, mon parcours et mes projets':'Wael Fezari, my journey and projects'}>
+  return <section id="home" ref={track} className={styles.track} data-ready="false" data-paused={paused} data-static={staticMode} aria-label={fr?'Wael Fezari, mon parcours et mes projets':'Wael Fezari, my journey and projects'}>
     <div data-hero-stage className={styles.stage}>
       <div className={styles.art} aria-hidden="true"><div className={styles.fallback}><SignatureLogo/></div><canvas ref={surface}/></div>
       <div className={styles.identity}><strong>Wael Fezari</strong><span>{fr?'Développeur full-stack & IA':'Full-stack & AI developer'}</span><span>Marseille, FR</span><Image className={styles.identityPortrait} src="/hero-art/wael-portrait.png" width={120} height={120} alt="Wael Fezari"/></div>
@@ -131,7 +132,7 @@ export default function HeroWorld() {
       </div>
       <div data-hero-panel className={`${styles.panel} ${styles.portalPanel}`} aria-hidden="true" style={{visibility:'hidden'}}><h2>{fr?'Chaque étape':'Every step'}<br/>{fr?'ouvre une porte.':'opens a door.'}</h2><p className={styles.portalCopy}>{fr?'Le parcours devient un espace de projets. Continuez à défiler pour entrer.':'The journey becomes a space for projects. Keep scrolling to step inside.'}</p></div>
       <div data-hero-panel className={styles.projectPanel} aria-hidden="true" style={{visibility:'hidden'}}>
-        <div className={styles.adDeck}>{personalProjects.map((item,index)=><article data-ad-card data-project={item.id} key={item.id} className={styles.adCard} style={{visibility:index===0?'visible':'hidden'}}>
+        <div className={styles.adDeck}>{personalProjects.map((item,index)=><article data-ad-card data-project={item.id} key={item.id} className={styles.adCard} aria-hidden="true" style={{visibility:'hidden',opacity:0}}>
           <a href={`#project-${item.id}`} onPointerMove={wakeArtwork} onPointerLeave={sleepArtwork} onClick={event=>{event.preventDefault();window.dispatchEvent(new CustomEvent('portfolio-project',{detail:item.id}));history.replaceState(null,'',`#project-${item.id}`);}} aria-label={`${fr?'Découvrir':'Explore'} ${item.name}`}>
             <div className={styles.adArt}><ProjectArtwork id={item.id} name={item.name} french={fr} animated={state.chapter===3&&state.projectActive===index&&!paused&&!staticMode}/></div>
             <div className={styles.adCopy}><h2>{item.name}</h2><p>{heroProjectCopy[index][projectLocale]}</p><span className={styles.adAction}>{fr?'Explorer le projet':'Explore the project'}<FiArrowUpRight/></span></div>
