@@ -181,6 +181,21 @@ export default function PersonalProjects() {
     const start = window.scrollY + root.getBoundingClientRect().top - parseFloat(root.style.getPropertyValue("--pin-top"));
     window.scrollTo({ top: start + (root.offsetHeight - stage.current.offsetHeight) * (index + 0.15) / personalProjects.length, behavior: "instant" });
   }
+  useEffect(()=>{
+    function openProject(event){
+      const id=event?.detail||decodeURIComponent(window.location.hash.replace('#project-',''));
+      const index=personalProjects.findIndex(project=>project.id===id);
+      if(index<0)return;
+      if(window.matchMedia('(max-width:760px)').matches)document.getElementById('personal-projects').scrollIntoView({block:'start',behavior:'instant'});
+      jumpTo(index);
+    }
+    window.addEventListener('portfolio-project',openProject);
+    window.addEventListener('hashchange',openProject);
+    if(window.location.hash.startsWith('#project-'))openProject();
+    return()=>{window.removeEventListener('portfolio-project',openProject);window.removeEventListener('hashchange',openProject);};
+  // jumpTo reads the current refs; reinstall when the motion preference changes.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[reducedMotion]);
   return (
     <section id="personal-projects" className={`section-wrap ${styles.section}`} aria-labelledby="personal-projects-title">
       <div className={styles.heading}>

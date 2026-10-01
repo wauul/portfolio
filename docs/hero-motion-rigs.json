@@ -1,0 +1,93 @@
+[
+  {
+    "id": "getratchet",
+    "layer": "rig-setting",
+    "prompt": "Remove the entire large red FRONT gear face including spokes and teeth, but KEEP the fixed central axle and hub in exactly the same position. Remove all crates. Keep the belts, chains, fixed hub, bearings and industrial scenery exactly unchanged. Reconstruct the dark machinery behind the removed red cog so a separate rotating red gear sprite can be added in front later. Identical camera, composition and dimensions.",
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-49c8ba0c-a6ab-4305-9f2c-3fa4cf8f2e69.png",
+    "file": "public/hero-art/layers/getratchet-rig-setting.png"
+  },
+  {
+    "id": "hooka-relay",
+    "layer": "rig-setting",
+    "prompt": "Remove only all envelopes/messages from inside the glass tubes and main central glass cylinder. Preserve exactly the original empty clear glass tubes, brass mounts, lighting and scenery. No new objects. Keep same camera, proportions, composition, and dimensions.",
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-c75508d5-6980-4e1b-9a5a-d07cc12ebd16.png",
+    "file": "public/hero-art/layers/hooka-relay-rig-setting.png"
+  },
+  {
+    "id": "hooka-relay",
+    "layer": "message",
+    "prompt": "Extract ONLY the large glowing transparent purple glass envelope with wax seal in the main glass cylinder. Single isolated envelope sprite, without glass cylinder, tube, scenery or background. True transparent alpha. Keep its detail and proportions, no extra envelope, no border.",
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-f82e4455-8b58-497a-8686-88d368832018.png",
+    "file": "public/hero-art/layers/hooka-relay-message.png"
+  },
+  {
+    "id": "rag-bench",
+    "layer": "rig-setting",
+    "prompt": "Remove ALL the floating paper documents and ALL long paper ribbons from the entire image. Reconstruct the scenery behind them. Preserve ALL four brass lenses, crystal diamond, its reflections and light rays, the glowing book, stands and architectural scenery exactly unchanged. Same camera, composition, and dimensions. No new objects.",
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-3f1a62f0-a5ae-4651-bf7e-679aac6002e9.png",
+    "file": "public/hero-art/layers/rag-bench-rig-setting.png"
+  },
+  {
+    "id": "are-we-vibing",
+    "layer": "rig-setting",
+    "prompt": "Remove only both vinyl records and ALL flowing fluid ribbons. Preserve both headphones completely, their exact positions, and the lounge scenery, table, lighting and composition unchanged. Reconstruct the space behind the removed records and ribbons. Same exact camera, aspect ratio and dimensions.",
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-3a237fed-0517-4ccb-ac48-6e15a75098fb.png",
+    "file": "public/hero-art/layers/are-we-vibing-rig-setting.png"
+  },
+  {
+    "id": "are-we-vibing",
+    "layer": "record",
+    "prompt": "Create a SINGLE isolated front-on perfectly circular black vinyl record, with the same realistic black grooves and coral pink central label as the left record in the reference. Centered circular face with transparent outside and transparent spindle hole. No perspective, no second record, no headphones, no fluid, no background. A clean sprite for rotation.",
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-0e303e6e-b4ff-4e11-afd0-f2ade8576778.png",
+    "file": "public/hero-art/layers/are-we-vibing-record.png"
+  },
+  {
+    "id": "are-we-vibing",
+    "layer": "rig-fluid",
+    "prompt": "Extract ONLY the connected coral pink and violet liquid ribbons that connect the two headphones. CRITICAL retain the exact ORIGINAL full 1672x941 canvas framing and original positions: ribbons occupy approximately x730 to1530 and y280 to550. Do not enlarge, center or move them. Everything else transparent. Remove headphones, records, scenery. Original ribbon contours unchanged.",
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-8476df63-8f94-42d6-9a13-8c45745c0d3e.png",
+    "file": "public/hero-art/layers/are-we-vibing-rig-fluid.png"
+  },
+  {
+    "id": "getratchet",
+    "layer": "gear",
+    "prompt": "Extract ONLY the large vermilion toothed gear face as a separate animation sprite on true transparent background. The gear should be an isolated clean annular red metal cog with its circular central aperture empty and transparent. Remove ALL axle, hubs, belts, chain links, crates, scenery and background. Preserve the same industrial red worn metal material and teeth as the reference. Render it front-on as a circular flat face, centered, with no perspective so it can rotate around its exact center. No shadows outside the cog, no text.",
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-4502b22b-be77-4d1d-959f-c0a0f0a6b259.png",
+    "file": "public/hero-art/layers/getratchet-gear.png"
+  },
+  {
+    "id": "getratchet",
+    "layer": "hub",
+    "prompt": "Extract ONLY the fixed central metal axle and circular silver/gold hub from this exact industrial picture, as an animation foreground sprite on transparent alpha. Keep EXACT original full 1672x941 canvas coordinates: hub around x960 y440 and axle protruding left to x850. Do not reposition, center or enlarge. Preserve the whole silver bolted hub and gold metal spindle. Remove ALL red gear, chains, belts, crates, background and scenery. Clean genuine transparency.",
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-55a3e480-69a9-4708-b14e-0a3be84140a5.png",
+    "file": "public/hero-art/layers/getratchet-hub.png"
+  },
+  {
+    "id": "watchtower",
+    "layer": "rig-setting",
+    "prompt": "Remove ONLY the long projected cone of light from the tower's lens into the left foreground. Preserve the lit lamp inside the tower and all scenery, price tag, products and shadows exactly. Reconstruct the dark green atmosphere where the beam was. Same camera, exact positions and dimensions.",
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-205c8279-123d-4e3d-880e-ea7bc702e40a.png",
+    "file": "public/hero-art/layers/watchtower-rig-setting.png"
+  },
+  {
+    "id": "recipe-buddy",
+    "layer": "rig-setting",
+    "prompt": "Remove ONLY the wooden spoon character including its little arms. Preserve the complete cookbook, bowl, cloth, vegetables, flying herbs and kitchen scenery exactly unchanged. Reconstruct the cookbook and cloth behind the spoon. Same camera, positions and dimensions.",
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-32bb1247-83db-4881-ae3c-aa2175647492.png",
+    "file": "public/hero-art/layers/recipe-buddy-rig-setting.png"
+  },
+  {
+    "id": "recipe-buddy",
+    "layer": "open",
+    "prompt": "Edit only the winking eye of this isolated spoon sprite so both eyes are open, smiling warmly. Keep every other pixel, pose, little arms, proportions, material, location and canvas framing unchanged. Keep genuine transparent alpha. No background.",
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-7a4c1374-1599-41c7-8c9e-427d7ab50145.png",
+    "file": "public/hero-art/layers/recipe-buddy-open.png"
+  },
+  {
+    "id": "recipe-buddy",
+    "layer": "tomato",
+    "prompt": "Extract ONE single whole red tomato with its little green stem from the supplied Recipe Buddy scene. Return an isolated realistic tomato sprite on genuine transparent background, centered. No carrot, pepper, leaves, bowl, scenery, shadows outside the tomato or cropped partial vegetables. Preserve the reference's warm photographic cinematic material.",
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-5b73d297-d803-4610-8c36-b3ab9cdaf786.png",
+    "file": "public/hero-art/layers/recipe-buddy-tomato.png"
+  }
+]

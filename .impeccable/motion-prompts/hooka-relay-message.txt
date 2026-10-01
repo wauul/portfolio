@@ -1,0 +1,1 @@
+Extract ONLY the large glowing transparent purple glass envelope with wax seal in the main glass cylinder. Single isolated envelope sprite, without glass cylinder, tube, scenery or background. True transparent alpha. Keep its detail and proportions, no extra envelope, no border.

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "query-otter",
+    "layer": "setting",
+    "prompt": "Edit target: supplied query-otter artwork. Remove the otter detective entirely, including its hands and magnifying glass. Reconstruct the submerged stone laboratory behind it. Preserve every other pixel, camera, placement, glass database stack and foreground desk. This is the background plate for a layered animation, so exact framing and original full 16:9 canvas are essential.",
+    "transparent": false,
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-77b21390-4b4c-4e58-8bd4-f8dea974e06b.png",
+    "file": "query-otter-setting.png"
+  },
+  {
+    "id": "query-otter",
+    "layer": "body",
+    "prompt": "Edit target: supplied query-otter artwork. Isolate only the otter detective body, head, hat, feet and satchel onto transparency at their EXACT original positions on the original full 16:9 canvas. Remove the forward forearm/paw holding the magnifying glass and remove the magnifying glass itself. Reconstruct underlying chest fur so the removed arm can pivot over this layer. Remove every other background and foreground item. No crop, no repositioning, no new composition. Preserve the same otter appearance and lighting.",
+    "transparent": true,
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-8d748b58-64a8-4034-834b-fb4ace14a9a0.png",
+    "file": "query-otter-body.png"
+  },
+  {
+    "id": "query-otter",
+    "layer": "tool",
+    "prompt": "Edit target: supplied query-otter artwork. Isolate only the otter’s forward forearm, paw and entire magnifying glass including handle onto transparency, at their EXACT original location on the original full 16:9 canvas. Remove all other parts of the otter and all background. The fur forearm must be complete to its shoulder connection so it can pivot as an animation layer. Exact matching scale, unchanged lighting, no crop or repositioning.",
+    "transparent": true,
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-2484c0b4-d92f-40e7-b210-de114461822e.png",
+    "file": "query-otter-tool.png"
+  },
+  {
+    "id": "patch-goblin",
+    "layer": "setting",
+    "prompt": "Edit target: supplied patch-goblin artwork. Remove the purple goblin character entirely, including all its body, face, hands, forearm and soldering tool. Reconstruct the workshop background behind it. Keep the brass machine it was repairing, desk, pipes, glowing check sign, equipment and every other item in precisely original positions. Remove the sparks so animation can create them. Exact original full 16:9 framing, camera and lighting. This is a background plate for animation.",
+    "transparent": false,
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-eb65b2aa-ce86-4d5a-8bac-b1566eb7c477.png",
+    "file": "patch-goblin-setting.png"
+  },
+  {
+    "id": "patch-goblin",
+    "layer": "body",
+    "prompt": "Edit target: supplied patch-goblin artwork. Isolate only the purple goblin body, head, ears, goggles, clothes and its resting right hand onto transparency at EXACT original positions on the original full 16:9 canvas. Remove its raised left forearm, paw and soldering tool. Fill underlying upper arm/clothing so the removed forearm can pivot over it. Remove every other background and desk item. No crop, repositioning or redesign; match original appearance and lighting precisely.",
+    "transparent": true,
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-5036021f-f3da-4f5d-8df2-0d0956876e61.png",
+    "file": "patch-goblin-body.png"
+  },
+  {
+    "id": "patch-goblin",
+    "layer": "tool",
+    "prompt": "Edit target: supplied patch-goblin artwork. Isolate only the goblin’s raised left forearm, paw and entire brass soldering tool onto transparency at EXACT original locations on the original full 16:9 canvas. Keep the complete forearm from its elbow connection so it can pivot to work. Remove all other character parts, sparks and backgrounds. No cropping, no repositioning, no rescaling; exact original appearance and lighting.",
+    "transparent": true,
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-71bf0341-f2cf-4db2-95f4-f59b158d9c27.png",
+    "file": "patch-goblin-tool.png"
+  }
+]

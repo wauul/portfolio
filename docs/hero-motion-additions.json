@@ -1,0 +1,86 @@
+[
+  {
+    "id": "query-otter",
+    "layer": "body-v2",
+    "prompt": "Edit target is the supplied transparent otter body animation layer. Remove BOTH forward forearms and ALL chest-level paws/hands. Keep the torso fur, chest, head, hat, satchel, tail and feet unchanged at exactly the original locations. Reconstruct smooth chest fur where any paw projects. The separate magnifying-arm layer will supply both working paws. Preserve original full 16:9 canvas and native transparency. No repositioning or crop.",
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-e47e55e0-ee25-41c0-ae42-171f73ca8ce6.png",
+    "file": "public/hero-art/layers/query-otter-body-v2.png"
+  },
+  {
+    "id": "patch-goblin",
+    "layer": "body-v2",
+    "prompt": "Edit target is the supplied transparent goblin body animation layer. Remove all visible forearms, wrists and paws/hands, including the large paw near the lower left torso. Retain head, eyes, ears, goggles, shoulders and torso/clothing unchanged. Let sleeves finish discreetly at elbow connections; the working arm will be supplied separately and the lower torso is hidden behind a machine. Preserve exact original placement and full 16:9 canvas, native alpha; do not crop or redesign.",
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-9c8b7274-59c2-493d-945d-f49d1fd9a87d.png",
+    "file": "public/hero-art/layers/patch-goblin-body-v2.png"
+  },
+  {
+    "id": "getratchet",
+    "layer": "setting",
+    "prompt": "Edit supplied machine artwork: remove all cargo crates/boxes from the conveyor belt, on its bottom horizontal section and its right upward section. Reconstruct the empty conveyor beneath them. Keep the turning orange gear, chains, gears, factory, lights and camera EXACTLY unchanged. Full original16:9 canvas. This is a background plate for adding animated moving crates.",
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-5492ace5-a3a5-48e6-a01e-810fda673f0f.png",
+    "file": "public/hero-art/layers/getratchet-setting.png"
+  },
+  {
+    "id": "getratchet",
+    "layer": "cargo",
+    "prompt": "Isolate only ONE grey industrial cargo crate from the lower front conveyor, with its metal corners and envelope emboss, as a transparent cutout. Keep it at its original location near x940,y685 on the full1672x941 canvas, with original perspective and lighting. Remove ALL background and all other objects. Do not center or enlarge it; no cropping.",
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-96f859a8-913d-4584-ad1a-a63c77054f4d.png",
+    "file": "public/hero-art/layers/getratchet-cargo.png"
+  },
+  {
+    "id": "study-room",
+    "layer": "papers",
+    "prompt": "Isolate the loose flying sheets AND the illustrated right-hand top page of the open book from this source onto a transparent full1672x941 canvas at EXACT original positions. Retain printed art and originalwarm lighting. Remove all lamps, rooms, table, bookcovers and underlyingpages. Flying sheets remain at their original separated positions, and the right-hand bookpage remains x1060..1500,y440..710. These will become separately animated sprites using source rectangles; never overlap/rearrange them. No crop or rescale.",
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-ed20f95e-44bb-4148-aefd-77f5eb3181c4.png",
+    "file": "public/hero-art/layers/study-room-papers.png"
+  },
+  {
+    "id": "rag-bench",
+    "layer": "document",
+    "prompt": "Isolate ONLY one of the printed document sheets in the upper document ribbon on the left, preferably the tall botanicaldiagram page near x570,y100, onto full1672x941 transparent canvas. Preserve exact source position, size, printing, lighting and native alpha. Remove all other image content. This sheet will flow through a lens and a prism in the animation. No crop, centering or resize.",
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-1bcbf1eb-fbec-433f-8c89-3fb5a00c7198.png",
+    "file": "public/hero-art/layers/rag-bench-document.png"
+  },
+  {
+    "id": "are-we-vibing",
+    "layer": "disks",
+    "prompt": "Isolate ONLY the two black vinyl records from the supplied artwork at their EXACT original scale and position on full1672x941 transparent canvas. Remove the colored connectingfluid from in front of them and reconstruct continuous concentric vinyl grooves and pink/purple labels in the occluded areas. Remove all headphones and background. Keep the original circular/elliptical perspective, centers around x1020y380 and x1230y390. No repositioning, cropping or redesign.",
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-fe4a4edc-1991-4081-a870-bca6eeed97a5.png",
+    "file": "public/hero-art/layers/are-we-vibing-disks.png"
+  },
+  {
+    "id": "are-we-vibing",
+    "layer": "fluid",
+    "prompt": "Isolate ONLY the flowing pink and violet translucent fluid connecting the headphones from the supplied artwork onto full1672x941 native transparent canvas, at EXACT original positions. Keep its delicate curves and shimmering colors. Remove headphones, vinylrecords and all background. The originalfluid silhouette is needed for motion compositing. No crop, rescaling or repositioning.",
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-feda6f25-e729-4bfc-b5b1-624ae869beb4.png",
+    "file": "public/hero-art/layers/are-we-vibing-fluid.png"
+  },
+  {
+    "id": "recipe-buddy",
+    "layer": "wink",
+    "prompt": "Isolate ONLY the wooden spoon character onto full1672x941 transparent canvas in EXACT original position and scale near x1350y570. Change one thing: its left eye is closed in a friendly wink, the other eye and smile remain. Retain original woodgrain, arms, body and lighting. Remove all background, cloth and food. No crop, recentering or resizing.",
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-76c42251-d790-4c9f-b5f4-04366046cc6d.png",
+    "file": "public/hero-art/layers/recipe-buddy-wink.png"
+  },
+  {
+    "id": "recipe-buddy",
+    "layer": "food",
+    "prompt": "Isolate ONLY the floating basil leaves, the tomato near x945y485, the yellowpepper near x1040y480 and the carrot near x1000y460 onto full1672x941 transparent canvas at their EXACT original positions and scales. Preserve original photographic foodtextures and warm lighting. Remove the bowl, all remaining food, spoon, table and background. These become separate sprites that tumble from the bowl. No repositioning, crop or enlargement.",
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-8cdf0091-3ec9-4690-8dd9-15831d55edda.png",
+    "file": "public/hero-art/layers/recipe-buddy-food.png"
+  },
+  {
+    "id": "study-room",
+    "layer": "setting",
+    "prompt": "Edit supplied Study Room artwork: remove ONLY the loose floating paper sheets in the air around the lamps and above the open book. Reconstruct the library and lamplight behind them. Keep the open book with its pages, all lamps, table, chairs, books, speech objects and room completely unchanged. Preserve exact original full1672x941 camera, composition and lighting. This is a clean background plate for independently animated flying papers.",
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-a8847eaf-79cb-45d3-b46e-16cffb378172.png",
+    "file": "public/hero-art/layers/study-room-setting.png"
+  },
+  {
+    "id": "wael",
+    "layer": "portrait",
+    "prompt": "Edit this exact photograph. Preserve the man's identity, face, glasses, hair, expression, clothing and proportions exactly, with no beautification or restyling. Remove the orange circle, all white background, and the thick white outline around him. Return only the person as a clean photographic cutout with genuine transparent alpha around hair, shoulders and torso, preserving the original composition. No colored background, no border.",
+    "source": "C:\\Users\\Waul\\.codex\\generated_images\\01a0f761-df94-74d1-9770-dd8d1e86fae6\\exec-fea01ce7-ced1-40b6-811e-7f3d417164ee.png",
+    "file": "public/hero-art/wael-portrait.png"
+  }
+]

@@ -1,0 +1,1 @@
+Extract ONE single whole red tomato with its little green stem from the supplied Recipe Buddy scene. Return an isolated realistic tomato sprite on genuine transparent background, centered. No carrot, pepper, leaves, bowl, scenery, shadows outside the tomato or cropped partial vegetables. Preserve the reference's warm photographic cinematic material.

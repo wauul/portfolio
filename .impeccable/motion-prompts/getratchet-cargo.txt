@@ -1,0 +1,1 @@
+Isolate only ONE grey industrial cargo crate from the lower front conveyor, with its metal corners and envelope emboss, as a transparent cutout. Keep it at its original location near x940,y685 on the full1672x941 canvas, with original perspective and lighting. Remove ALL background and all other objects. Do not center or enlarge it; no cropping.

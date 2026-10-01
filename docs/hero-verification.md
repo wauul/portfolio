@@ -1,0 +1,45 @@
+# Hero refinement verification
+
+Recorded on 1 October 2026 for the Signal Atlas motion refinement, verified at the captured scope. Evidence below was supplied by implementation and browser review passes; this document does not claim a separate rerun by the documenter. Earlier `world-*` captures cover the preceding artwork extension. The subsequent `final-*` captures are transitional and do not establish completion. All nine artwork actions have been rebuilt and reviewed in paired `clean-*` captures and current `.impeccable/review/shipped-*` captures. The finish review resolved both findings, and the closing invitation-addendum review returned SHIP with no material fixes across all six new captures. The portrait is now beside the name and role in the opening identity scene and is absent from Your idea.
+
+| Check | Observed result |
+| --- | --- |
+| Production build and lint | Latest production build and lint passed after the localized invitation-tile label |
+| Automated checks | Latest run: all 28 tests passed, including nine unique finite particle forms, continuous handoffs, sphere gathering, burst/return, scroll-mapping round trips and hold-before-passage-before-reveal choreography |
+| Native wheel journey | Previous artwork extension: all nine project names visited in their authored order |
+| Artwork loading | All nine composited artwork actions reviewed in current paired captures; prior base-image loading check found all nine complete with nonzero natural width |
+| Artwork provenance | Latest embedded exact prompt scan after removal of five abandoned assets: 35 rasters checked, zero missing, including recipe-buddy-tomato. Sources and origins are recorded in docs/hero-art-prompts.json, docs/hero-motion-art-prompts.json, docs/hero-motion-additions.json and docs/hero-motion-rigs.json |
+| Desktop and mobile composition | Authoritative shipped-opening/mobile-opening: portrait face clear; shipped-idea/mobile-idea: no portrait; shipped-mobile-project: fits without horizontal overflow; shipped-light-opening inspected. Latest invitation-orbit/passage/final desktop/mobile captures verified; mobile has no horizontal overflow |
+| Artwork interaction | All nine clean composited 2D actions reviewed in paired clean-* captures. Latest shipped captures confirm Study Room hinge, Watchtower soft beam, RecipeBuddy pieces, Hooka Relay color/brace treatment and GetRatchet belt occlusion |
+| Exact detailed project navigation | Current GetRatchet CTA reaches #project-getratchet and detailed heading GetRatchet at 180px from viewport top; earlier RecipeBuddy and mobile Hooka Relay checks passed |
+| Reduced motion | Current shipped-reduced-motion capture confirms data-static=true; previous clearing-preference check restored the journey and Pause control |
+| Particle interaction and ending | Current shipped-portal/mobile-portal show particle forms; shipped-portal-entry focuses GetRatchet gears; shipped-journey-transition records incoming copy alpha 0.577 and 5px shift. Earlier pointer scatter and explosion observed; ending staging remains covered by tests. Orbit-mark fixes confirmed; latest addendum verifies centered signature hold, tenth-tile focus/passage and final invitation |
+| Browser errors | Fresh isolated-preview browser error list is empty |
+| Design persistence | Motion descriptions match final source: shared identity, opening portrait, scroll-driven copy crossfades, particle portal, stationary poster dissolves, composited 2D actions and signature marks; localized tenth tile, extended finale and invertible scroll mapping verified at the captured scope |
+
+The source uses a 3000svh desktop track and 2600svh mobile track. Raw scroll progress 0–0.8 maps to internal journey progress 0–0.93, and raw 0.8–1 maps to internal 0.93–1; chapter controls use the inverse. This reserves the final 20% of the track for the ending while preserving project reading time. The portal contains nine project particle sculptures with five journey particle sculptures orbiting outside, then focuses GetRatchet. Hero copy opacity, blur and a 12px vertical shift follow scroll progress. All five journey entries share one stage and crossfade alongside particle shapes. Advertisement image and frame edges are feathered. Header, footer, static fallback and favicon share the hero's authored handwritten WF curves.
+
+The active advertisement's hover or keyboard-focus canvas uses clean generated plates and isolated moving components for authored subject actions. QueryOtter and PatchGoblin move body and working arm/tool sprites; GetRatchet turns its gear and carries cargo behind a foreground belt; Hooka Relay sends messages with brace occlusion; Study Room turns a page at a fixed book-spine hinge; RAG Bench sends documents through lenses; RWeVibing turns records with fluid highlights and notes; Watchtower sweeps a soft beam; RecipeBuddy uses expression sprites and separate isolated tomato and basil component masks. Earlier action implementations are not accepted final visual evidence. The artwork camera stays fixed. These are raster component rigs, not a physical three-dimensional simulation. Source lifecycle guards restrict the canvas to the active card and stop it on pointer exit, blur, pause, reduced motion and hidden-tab changes; the rebuilt actions have current visual review; full physical-device performance remains unbenchmarked. Actual application screenshots and demos remain in the detailed personal lab.
+
+Project posters remain stationary. Their dither masks dissolve over local project progress 0.30–0.45, while the shared 6,111 particles sample actual image colors and leave rectangular poster positions. The outgoing contour holds over 0.49–0.58, morphs over 0.58–0.76, and the next contour holds over 0.76–0.86. The next poster appears through its mask over 0.86–1.00. These intervals describe source behavior; journey crossfade and portal entry are supported by the current shipped captures.
+
+The final poster fades at internal progress 0.918–0.930. The ending gathers particles into a sphere at 0.924–0.940, bursts at 0.946–0.958 and reforms the signature at 0.960–0.980. The clear centered WF holds at scale 0.76 while nine project marks and a tenth outlined invitation tile appear over 0.974–0.980. The nine marks combine four sourced application SVGs and five authored particle contours. Continued scrolling focuses the tenth tile at 0.984–0.991, expands it into an aperture at 0.989–0.996 and reveals the existing invitation only at 0.993–0.999. The WF and nine marks then settle beside the copy. The portrait appears only beside the name and role in the opening identity scene.
+
+The tenth tile reads “Your idea” in English and “Votre idée” in French, uses the computed project font and a 14px outlined border, and is created procedurally in a CanvasTexture. Its ambient pulse stops on pause or reduced motion. English is visible in the new isolated-preview captures; French caption and renderer updates on language changes were verified in source. No raster asset was added; the 35-raster prompt inventory remains valid.
+
+| Invitation addendum capture | Viewport | Internal progress | Recorded stage |
+| --- | --- | --- | --- |
+| .impeccable/review/invitation-orbit-desktop.jpg | 1280 × 720 | 0.98199 | Centered WF, nine marks and labelled tenth tile |
+| .impeccable/review/invitation-passage-desktop.jpg | 1280 × 720 | 0.99050 | Focused expanding invitation aperture |
+| .impeccable/review/invitation-final-desktop.jpg | 1280 × 720 | 0.998998 | Existing invitation with WF and marks beside copy |
+| .impeccable/review/invitation-orbit-mobile.jpg | 390 × 844 | 0.9820 | Centered signature hold and labelled tile |
+| .impeccable/review/invitation-passage-mobile.jpg | 390 × 844 | 0.99050 | Invitation aperture passage |
+| .impeccable/review/invitation-final-mobile.jpg | 390 × 844 | 0.998997 | Final invitation composition |
+
+The closing addendum review returned SHIP: all six captures valid, all stages matched the requested flow, and no material fix identified. The fresh preview reported no mobile overflow and an empty browser error list. Stills establish the captured compositions; they do not establish temporal smoothness or physical-device performance.
+
+The earlier finish review found dim orbit contours and a counter that could disagree with the active card. Its confirmed fix normalizes mark bounds in colored square tiles, adjusts the mobile invitation overlay and uses projectActive for the counter. Both findings were resolved and the earlier review returned SHIP before the invitation addendum.
+
+No full physical-device performance benchmark or individual audit of all nine detailed projects was performed.
+
+The incumbent Signal Atlas palette, fonts and system remain authoritative. Legacy PRODUCT.md schema drift and the incumbent DESIGN.md/sidecar format are pre-existing; this ordinary extension did not repair or regenerate them.

@@ -173,3 +173,10 @@ footer.section-wrap { display:flex; align-items:center; justify-content:space-be
 .visitor-icon > svg { width:28px; height:28px; }.visitor-footnote button { display:inline-flex; align-items:center; justify-content:center; gap:8px; }.visitor-lab > details[open] > summary > span:last-child svg { transform:rotate(45deg); }.visitor-lab summary > span:last-child svg { width:24px; height:24px; transition:transform .2s; }
 .route-message h1 { font-size:clamp(2rem,5vw,4rem); line-height:1.2; letter-spacing:-.04em; }
 @media(max-width:760px) { .project-identity { display:block; }.project-identity > p { max-width:none; }.work-visual { max-width:420px; margin:12px auto 0; } }
+
+.work-chapter { padding-block:32px; border-top:1px solid var(--line); }
+.work-chapter .experience-row { border:0; padding-top:0; }
+.work-chapter .projects { margin-top:28px; }
+.work-section .section-heading .text-link { margin-top:24px; }
+.signature-logo { display:block; width:62px; height:44px; color:var(--accent); }
+footer .signature-logo { width:62px; height:44px; }

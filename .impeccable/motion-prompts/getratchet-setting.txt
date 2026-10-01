@@ -1,0 +1,1 @@
+Edit supplied machine artwork: remove all cargo crates/boxes from the conveyor belt, on its bottom horizontal section and its right upward section. Reconstruct the empty conveyor beneath them. Keep the turning orange gear, chains, gears, factory, lights and camera EXACTLY unchanged. Full original16:9 canvas. This is a background plate for adding animated moving crates.

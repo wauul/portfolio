@@ -1,0 +1,1 @@
+Edit only the winking eye of this isolated spoon sprite so both eyes are open, smiling warmly. Keep every other pixel, pose, little arms, proportions, material, location and canvas framing unchanged. Keep genuine transparent alpha. No background.
