@@ -57,7 +57,7 @@ Feedback: 150ms press feedback, 220ms control changes, 600ms spatial settling, c
 ## Implementation coverage checklist
 
 - [x] Header, navigation, mobile menu, language popover, theme controls and system reduced-motion support
-- [x] Hero particle signature, pointer scatter/return, CV links, technology strip and opening visit context
+- [x] Hero particle signature, pointer scatter/return, CV links, grouped stack signal rail with staggered reveal and opening visit context
 - [x] Unified work and experience, professional project contributions, bilingual type tags and education
 - [x] Nine original artwork advertisements, shared particle contour forms, exact detail jumps and final signature burst/return into the contact invitation
 - [x] Detailed personal lab with bilingual type tags, six animated demos and three actual interface previews, chapter controls, image failure and mobile swipe

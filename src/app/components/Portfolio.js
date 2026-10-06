@@ -11,11 +11,18 @@ import ContactForm from "./ContactForm";
 import WorkVisual from "./WorkVisual";
 import ProjectTypeTags from "./ProjectTypeTags";
 
+const stackRail = [
+  { en: "Interfaces", fr: "Interfaces", tools: ["TypeScript", "React", "Next.js"] },
+  { en: "Intelligence", fr: "Intelligence", tools: ["Python", "FastAPI", "Azure OpenAI"] },
+  { en: "Systems", fr: "Systèmes", tools: ["Node.js", "PostgreSQL", "Docker"] },
+];
+
 export default function Portfolio() {
   const { language, t } = usePreferences();
   const fr = language === "fr";
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButton = useRef(null);
+  const railRef = useRef(null);
   const [activeSection, setActiveSection] = useState("home");
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
@@ -29,6 +36,16 @@ export default function Portfolio() {
     const close = () => { if (media.matches) setMenuOpen(false); };
     media.addEventListener("change", close);
     return () => media.removeEventListener("change", close);
+  }, []);
+  useEffect(() => {
+    const node = railRef.current;
+    if (!node || typeof IntersectionObserver === "undefined") return;
+    node.classList.add("rail-armed");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) { node.classList.remove("rail-armed"); observer.disconnect(); } });
+    }, { threshold: 0.2 });
+    observer.observe(node);
+    return () => observer.disconnect();
   }, []);
   const navigation = [["work", fr ? "Travail & parcours" : "Work & experience"], ["personal-projects", t("Personal projects")]];
   return <div className="portfolio">
@@ -47,7 +64,12 @@ export default function Portfolio() {
     <main id="main" tabIndex={-1}>
       <HeroWorld />
 
-      <div className="stack-strip"><div className="section-wrap"><span>{fr ? "Outils de travail" : "Built with"}</span><ul>{["Python", "TypeScript", "React", "Next.js", "Azure OpenAI", "FastAPI"].map(tool => <li key={tool}>{tool}</li>)}</ul></div></div>
+      <div className="stack-strip" ref={railRef}><div className="section-wrap"><span className="strip-label">{fr ? "Outils de travail" : "Built with"}</span><ul className="stack-rail">{stackRail.map((group, groupIndex) => (
+        <li key={group.en} className="stack-group">
+          <div className="stack-group-head"><span className="stack-group-index">{String(groupIndex + 1).padStart(2, "0")}</span><span className="stack-group-label">{fr ? group.fr : group.en}</span></div>
+          <ul className="stack-chips">{group.tools.map((tool, toolIndex) => <li key={tool} className="stack-chip" style={{ "--i": groupIndex * 3 + toolIndex }}>{tool}</li>)}</ul>
+        </li>
+      ))}</ul></div></div>
 
       <section id="work" className="section-wrap work-section">
         <div className="section-heading"><h2>{fr ? "Le travail." : "The work."}<br /><span className="accent-word">{fr ? "Le parcours." : "The experience."}</span></h2><div><p>{fr ? "Des applications concrètes, et le parcours qui leur donne forme. De l’interface à l’intelligence et aux intégrations." : "Real applications, and the experience behind them. From interfaces to intelligence and integrations."}</p><a className="text-link" href="https://www.linkedin.com/in/wael-fezari/" target="_blank" rel="noopener noreferrer">LinkedIn<FiArrowUpRight aria-hidden="true" /></a></div></div>
