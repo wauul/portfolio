@@ -14,8 +14,8 @@ import ProjectTypeTags from "./ProjectTypeTags";
 const stackRail = [
   { en: "Applied AI", fr: "IA appliquée", tools: ["Azure OpenAI", "Groq", "RAG", { en: "AI agents", fr: "agents IA" }, "Local AI"] },
   { en: "Retrieval & evaluation", fr: "Recherche & évaluation", tools: ["pgvector", "Embeddings", "Ragas"] },
-  { en: "Full-stack & backend", fr: "Full-stack & backend", tools: ["Python", "FastAPI", "Node.js", "TypeScript", "Next.js", "React", "PostgreSQL"] },
-  { en: "Cloud & data", fr: "Cloud et données", tools: ["AWS", "GCP", "MongoDB", "Firebase"] },
+  { en: "Fullstack", fr: "Fullstack", tools: ["Python", "FastAPI", "Flask", "Node.js", "TypeScript", "Next.js", "React"] },
+  { en: "Cloud & data", fr: "Cloud et données", tools: ["AWS", "GCP", "MongoDB", "PostgreSQL", "Firebase"] },
   { en: "DevOps", fr: "DevOps", tools: ["Docker", "Git", "GitHub", "GitLab"] },
   { en: "Mobile", fr: "Mobile", tools: ["Flutter", "Kotlin"] },
 ];
