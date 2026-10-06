@@ -95,7 +95,7 @@ em { font-style:normal; font-family:inherit; color:var(--accent); }
 .stack-group-index { font:500 11px var(--font-mono),monospace; color:var(--accent); letter-spacing:.1em; }
 .stack-group-label { font:500 12px var(--font-mono),monospace; color:var(--muted); text-transform:uppercase; letter-spacing:.16em; }
 .stack-chips { display:flex; flex-wrap:wrap; gap:8px; list-style:none; margin:0; padding:0; }
-.stack-chip { font:400 13px var(--font-mono),monospace; color:var(--ink); background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:9px 14px; white-space:nowrap; transition:opacity .55s var(--ease) calc(var(--i,0) * 70ms),transform .55s var(--ease) calc(var(--i,0) * 70ms),border-color .2s var(--ease),color .2s var(--ease); }
+.stack-chip { font:400 13px var(--font-mono),monospace; color:var(--ink); background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:9px 14px; white-space:nowrap; transition:opacity .55s var(--ease) calc(var(--i,0) * 60ms),transform .55s var(--ease) calc(var(--i,0) * 60ms),border-color .2s var(--ease),color .2s var(--ease); }
 .stack-chip:hover { border-color:var(--accent); color:var(--accent); }
 .stack-strip.rail-armed .stack-chip { opacity:0; transform:translateY(12px); }
 [data-motion="paused"] .stack-chip { opacity:1 !important; transform:none !important; transition:none !important; }
