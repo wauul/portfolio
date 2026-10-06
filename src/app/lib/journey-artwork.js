@@ -1,6 +1,6 @@
 // Every chapter uses the same 21 strands and point order, so its artwork can morph
 // directly into the next chapter rather than swapping illustrations.
-export const artworkSteps = 96;
+const artworkSteps = 96;
 const tau = Math.PI * 2;
 const rectangle = (cx, cy, width, height, t) => [
   cx + Math.sign(Math.cos(t)) * Math.abs(Math.cos(t)) ** .2 * width / 2,
