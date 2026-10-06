@@ -12,11 +12,15 @@ import WorkVisual from "./WorkVisual";
 import ProjectTypeTags from "./ProjectTypeTags";
 
 const stackRail = [
-  { en: "Development", fr: "Développement", tools: ["Python", "FastAPI", "TypeScript", "React", "Next.js", "Node.js"] },
-  { en: "Applied AI", fr: "IA appliquée", tools: ["Azure OpenAI", "RAG", "Local AI"] },
-  { en: "Cloud & data", fr: "Cloud et données", tools: ["Docker", "PostgreSQL", "AWS"] },
-  { en: "Integrations", fr: "Intégrations", tools: ["REST APIs", "SAML SSO", "Bubble.io"] },
+  { en: "Applied AI", fr: "IA appliquée", tools: ["Azure OpenAI", "Groq", "RAG", { en: "AI agents", fr: "agents IA" }, "Local AI"] },
+  { en: "Retrieval & evaluation", fr: "Recherche & évaluation", tools: ["pgvector", "Embeddings", "Ragas"] },
+  { en: "Full-stack & backend", fr: "Full-stack & backend", tools: ["Python", "FastAPI", "Node.js", "TypeScript", "Next.js", "React", "PostgreSQL"] },
+  { en: "Cloud & data", fr: "Cloud et données", tools: ["AWS", "GCP", "MongoDB", "Firebase"] },
+  { en: "DevOps", fr: "DevOps", tools: ["Docker", "Git", "GitHub", "GitLab"] },
+  { en: "Mobile", fr: "Mobile", tools: ["Flutter", "Kotlin"] },
 ];
+const chipLabel = (chip, fr) => (typeof chip === "string" ? chip : fr ? chip.fr : chip.en);
+const chipKey = (chip) => (typeof chip === "string" ? chip : chip.en);
 
 export default function Portfolio() {
   const { language, t } = usePreferences();
@@ -68,9 +72,9 @@ export default function Portfolio() {
       <div className="stack-strip" ref={railRef}><div className="section-wrap"><span className="strip-label">{fr ? "Outils de travail" : "Built with"}</span><ul className="stack-rail">{stackRail.map((group, groupIndex) => {
         const offset = stackRail.slice(0, groupIndex).reduce((sum, g) => sum + g.tools.length, 0);
         return (
-          <li key={group.en} className="stack-group">
-            <div className="stack-group-head"><span className="stack-group-index">{String(groupIndex + 1).padStart(2, "0")}</span><span className="stack-group-label">{fr ? group.fr : group.en}</span></div>
-            <ul className="stack-chips">{group.tools.map((tool, toolIndex) => <li key={tool} className="stack-chip" style={{ "--i": offset + toolIndex }}>{tool}</li>)}</ul>
+          <li key={group.en} className="stack-seg">
+            <div className="stack-seg-head"><span className="stack-seg-tick" aria-hidden="true"></span><span className="stack-seg-label">{fr ? group.fr : group.en}</span></div>
+            <ul className="stack-seg-chips">{group.tools.map((tool, toolIndex) => <li key={chipKey(tool)} className="stack-chip" style={{ "--i": offset + toolIndex }}>{chipLabel(tool, fr)}</li>)}</ul>
           </li>
         );
       })}</ul></div></div>

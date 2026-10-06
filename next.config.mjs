@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Isolated build output for verification runs while the dev server owns .next/ (set NEXT_DIST_DIR=.next-qa)
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   async headers() {
     return [
       {
