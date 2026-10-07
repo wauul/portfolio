@@ -1,6 +1,6 @@
 # Wael Fezari — Portfolio
 
-Personal portfolio for Wael Fezari, a full-stack and AI developer. The site presents selected work, experience, and ways to get in touch, with French and English content.
+Personal portfolio for Wael Fezari, focused on AI engineering and full-stack development. The site presents selected work, experience, and ways to get in touch, with French and English content.
 
 Built with Next.js and designed as a fast, accessible single-page experience.
 
@@ -54,6 +54,18 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 | `pnpm start` | Runs the production server |
 | `pnpm lint` | Runs ESLint |
 | `pnpm test` | Runs the test suite |
+
+## Updating the CV
+
+Both one-page CVs use the content and layout in `scripts/build_cv.py`. On Windows, with Python, `reportlab` and `pypdf` installed, run:
+
+```powershell
+python scripts/build_cv.py
+```
+
+The builder uses Windows Segoe UI fonts and `scripts/assets/cv-portrait.png`. It regenerates `public/Wael-Fezari-CV.pdf` (French), its `Wael-Fezari-CV-FR.pdf` alias, and `public/Wael-Fezari-CV-EN.pdf`. The portfolio download endpoint serves the French or English file according to the selected language. Render and visually inspect both languages after content changes.
+
+The AI/ML positioning and selected opportunities are documented in `docs/ai-ml-job-shortlist.md`.
 
 ## Environment variables
 

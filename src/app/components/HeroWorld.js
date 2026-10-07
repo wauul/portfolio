@@ -119,7 +119,7 @@ export default function HeroWorld() {
   return <section id="home" ref={track} className={styles.track} data-ready="false" data-paused={paused} data-static={staticMode} aria-label={fr?'Wael Fezari, mon parcours et mes projets':'Wael Fezari, my journey and projects'}>
     <div data-hero-stage className={styles.stage}>
       <div className={styles.art} aria-hidden="true"><div className={styles.fallback}><SignatureLogo/></div><canvas ref={surface}/></div>
-      <div className={styles.identity}><strong>Wael Fezari</strong><span>{fr?'Développeur full-stack & IA':'Full-stack & AI developer'}</span><span>Marseille, FR</span><Image className={styles.identityPortrait} src="/hero-art/wael-portrait.png" width={120} height={120} alt="Wael Fezari"/></div>
+      <div className={styles.identity}><strong>Wael Fezari</strong><span>{fr?'Développeur full-stack & ingénieur IA':'Full-stack developer & AI engineer'}</span><span>Marseille, FR</span><Image className={styles.identityPortrait} src="/hero-art/wael-portrait.png" width={120} height={120} alt="Wael Fezari"/></div>
       <p className={styles.note}>{fr?'Des interfaces. De l’intelligence.':'Interfaces. Intelligence.'}<br/>{fr?'Des systèmes qui travaillent ensemble.':'Systems that work together.'}</p>
       <div data-hero-panel className={`${styles.panel} ${styles.intro}`}>
         <h1>{fr?'Connecter':'Connect'}<br/>{fr?'les possibles.':'the possibilities.'}</h1>

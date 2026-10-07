@@ -39,3 +39,9 @@ next-env.d.ts
 
 # environment variables
 .env
+
+# Local renders, backups and design-review scratch tools
+/tmp/
+/.impeccable/review/
+/.impeccable/*.cjs
+/.impeccable/*.json

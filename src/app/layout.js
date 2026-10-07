@@ -7,14 +7,14 @@ const mono = localFont({ src: "./fonts/IBMPlexMono.ttf", variable: "--font-mono"
 const site = "https://wael-fezari.vercel.app";
 export const metadata = {
   metadataBase: new URL(site),
-  title: "WF · Wael Fezari — Développeur full-stack & IA",
+  title: "WF · Wael Fezari — Développeur full-stack & ingénieur IA",
   description:
-    "Développeur full-stack à Marseille : interfaces, systèmes connectés et IA appliquée. Python, TypeScript, React et Azure OpenAI. Disponible en CDI et freelance.",
+    "Développeur full-stack et ingénieur IA à Marseille. Python, TypeScript, React, Next.js et FastAPI. Agents LangGraph, RAG, évaluation Ragas et observabilité. Disponible en CDI et freelance.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Wael Fezari · Interfaces, intelligence, intégrations",
+    title: "Wael Fezari · Développement full-stack & ingénierie IA",
     description:
-      "Développement full-stack et IA appliquée. Découvrez mes projets, mon parcours et les possibilités de collaboration.",
+      "Agents, RAG, évaluation et observabilité : découvrez mes projets d’ingénierie IA et mon parcours en développement full-stack.",
     url: site,
     siteName: "Wael Fezari",
     locale: "fr_FR",
@@ -28,12 +28,12 @@ export default function RootLayout({ children }) {
     "@type": "Person",
     name: "Wael Fezari",
     url: site,
-    jobTitle: "Full-stack & AI Developer",
+    jobTitle: "Full-stack Developer & AI Engineer",
     sameAs: [
       "https://github.com/wauul",
       "https://www.linkedin.com/in/wael-fezari/",
     ],
-    knowsAbout: ["Python", "TypeScript", "React", "Azure OpenAI", "RAG"],
+    knowsAbout: ["Python", "TypeScript", "React", "FastAPI", "Azure OpenAI", "LangChain", "LangGraph", "RAG", "pgvector", "Ragas", "Langfuse", "Sentry", "OpenTelemetry"],
   };
   return (
     <html lang="fr" data-theme="dark" className={`${space.variable} ${mono.variable}`} suppressHydrationWarning>

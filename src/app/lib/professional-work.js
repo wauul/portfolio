@@ -6,13 +6,14 @@ export const projects = [
     title: "A clearer picture of teamwork.",
     name: "Architecture team planner",
     description:
-      "An interactive planning tool that brings teams, tasks and time into one timeline. Built in vanilla JavaScript as a custom Bubble plugin.",
+      "An interactive team planner with an AI assistant that turns briefs into draft tasks and suggests revised schedules when deadlines or availability change.",
     tags: ["JavaScript", "Bubble plugin", "Lucca API"],
     type: "timeline",
     details: [
       "Drag, drop and resize tasks; manage phases and key dates across teams.",
       "Respect weekends, public holidays and leave imported from Lucca.",
       "Send declared time to Lucca when a task is marked done, with PDF export for planning reviews.",
+      "Check dependencies, leave and team capacity before proposing schedule changes for review.",
     ],
   },
   {
@@ -22,13 +23,13 @@ export const projects = [
     title: "From documents to answers.",
     name: "Enterprise knowledge assistant",
     description:
-      "A conversational assistant connecting company knowledge to natural-language questions through retrieval-augmented generation.",
+      "A source-grounded RAG assistant that answers employee questions and prepares onboarding checklists from approved company procedures.",
     tags: ["Azure OpenAI", "Azure AI Search", "RAG", "Docker"],
     type: "ai",
     details: [
       "Built an enterprise chatbot at ROKI using OpenAI on Azure and Bubble.",
       "Used Azure AI Search to retrieve relevant company-document passages for the RAG workflow.",
-      "Connected the AI experience to the application through service integrations.",
+      "Support answers with document passages and flag missing or conflicting information.",
     ],
   },
   {
@@ -38,12 +39,12 @@ export const projects = [
     title: "One connected workspace.",
     name: "Microsoft & business workflows",
     description:
-      "SSO and Microsoft tool integrations, alongside a Bubble application for the everyday flow of stock, orders and deliveries.",
+      "Microsoft integrations with email-to-workflow assistance: extract requests and dates, then prepare document updates and replies for user review.",
     tags: ["SAML SSO", "Microsoft", "API integration", "Bubble"],
     type: "integration",
     details: [
       "Implemented Microsoft SSO using SAML and integrations with Outlook, Word, Excel and PowerPoint.",
-      "Integrated AI capabilities through Microsoft OpenAI services.",
+      "Extract email action items and prepare document updates and reply drafts for user approval using Microsoft OpenAI services.",
       "Built a separate Bubble application to manage inventory, orders and deliveries.",
     ],
   },

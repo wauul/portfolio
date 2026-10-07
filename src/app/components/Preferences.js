@@ -67,8 +67,8 @@ export function PreferencesProvider({ children }) {
     document.documentElement.lang = language;
     document.title =
       language === "fr"
-        ? "WF · Wael Fezari — Développeur full-stack & IA"
-        : "WF · Wael Fezari — Full-stack Developer & Applied AI";
+        ? "WF · Wael Fezari — Développeur full-stack & ingénieur IA"
+        : "WF · Wael Fezari — Full-stack Developer & AI Engineer";
   }, [language]);
   function changeLanguage(value) {
     setLanguage(value);
